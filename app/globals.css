@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 38 30% 97%;
+  --foreground: 222 28% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 25% 18%;
+  --border: 222 20% 86%;
+  --primary: 196 94% 42%;
+  --primary-foreground: 210 40% 98%;
+  --muted: 210 26% 94%;
+  --muted-foreground: 220 10% 40%;
+}
+
+.dark {
+  --background: 220 23% 8%;
+  --foreground: 210 40% 98%;
+  --card: 220 25% 11%;
+  --card-foreground: 210 40% 98%;
+  --border: 220 18% 22%;
+  --primary: 188 96% 46%;
+  --primary-foreground: 220 23% 8%;
+  --muted: 220 20% 14%;
+  --muted-foreground: 214 15% 72%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: linear-gradient(120deg, rgba(14, 165, 233, 0.08), rgba(16, 185, 129, 0.05));
+  }
+
+  .font-heading {
+    font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  }
+
+  .font-body {
+    font-family: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply border border-white/15 bg-white/60 shadow-glass backdrop-blur-2xl;
+  }
+
+  .dark .glass {
+    @apply border-white/10 bg-white/5;
+  }
+}
