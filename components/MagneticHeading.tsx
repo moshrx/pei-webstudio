@@ -22,12 +22,12 @@ export function MagneticHeading({ title, subtitle, className }: MagneticHeadingP
     >
       <motion.h2
         style={{ x, y }}
-        className="font-heading text-3xl font-semibold leading-tight tracking-tight md:text-5xl"
+        className="font-heading text-2xl font-semibold leading-tight tracking-tight sm:text-3xl md:text-5xl"
       >
         {title}
       </motion.h2>
       {subtitle ? (
-        <p className="mt-4 max-w-2xl text-base text-muted-foreground md:text-lg">
+        <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:mt-4 sm:text-base md:text-lg">
           {subtitle}
         </p>
       ) : null}

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx next build:*)",
+      "Bash(npx --yes playwright:*)",
+      "Bash(npx playwright install:*)",
+      "Bash(node scripts/screenshots.mjs:*)",
+      "Bash(npm install --no-save playwright)"
+    ]
+  }
+}

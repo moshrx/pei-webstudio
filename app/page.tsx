@@ -8,7 +8,7 @@ import { PortfolioSection } from "@/components/sections/PortfolioSection";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="pb-28">
       <Header />
       <HeroSection />
       <FeaturesSection />

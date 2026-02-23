@@ -65,15 +65,15 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28">
-      <div className="mx-auto w-[min(1100px,calc(100%-2rem))]">
+    <section id="contact" className="py-16 sm:py-20 md:py-28">
+      <div className="mx-auto w-[min(1100px,calc(100%-1rem))] sm:w-[min(1100px,calc(100%-2rem))]">
         <MagneticHeading
           title="Let’s build your next revenue-ready website"
           subtitle="Tell us about your business goals and we will map the right stack, timeline, and training handoff."
         />
-        <Card className="mt-10 p-6 md:p-8">
-          <form className="grid gap-5" onSubmit={handleSubmit(onSubmit)} noValidate>
-            <div className="grid gap-5 md:grid-cols-2">
+        <Card className="mt-8 p-4 sm:mt-10 sm:p-6 md:p-8">
+          <form className="grid gap-4 sm:gap-5" onSubmit={handleSubmit(onSubmit)} noValidate>
+            <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
               <div className="space-y-2">
                 <Input placeholder="Your name" {...register("name")} />
                 {errors.name ? (
@@ -99,8 +99,8 @@ export function ContactSection() {
                 <p className="text-xs text-red-500">{errors.message.message}</p>
               ) : null}
             </div>
-            <div className="flex items-center gap-3">
-              <Button type="submit" disabled={isSubmitting}>
+            <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+              <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
                 {isSubmitting ? "Sending..." : "Send Inquiry"}
               </Button>
               {submitted ? (
@@ -112,7 +112,9 @@ export function ContactSection() {
                   Thanks, we’ll reach out shortly.
                 </motion.p>
               ) : null}
-              {submitError ? <p className="text-sm text-red-500">{submitError}</p> : null}
+              {submitError ? (
+                <p className="text-sm text-red-500 sm:max-w-[420px]">{submitError}</p>
+              ) : null}
             </div>
           </form>
         </Card>

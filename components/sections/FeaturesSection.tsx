@@ -23,18 +23,18 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-20 md:py-28">
-      <div className="mx-auto w-[min(1100px,calc(100%-2rem))]">
+    <section id="features" className="py-16 sm:py-20 md:py-28">
+      <div className="mx-auto w-[min(1100px,calc(100%-1rem))] sm:w-[min(1100px,calc(100%-2rem))]">
         <MagneticHeading
           title="Built for modern SMB teams, not just developers"
           subtitle="High-conversion websites with practical editing workflows and long-term maintainability."
         />
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-3 sm:mt-10 sm:gap-4 md:grid-cols-3">
           {features.map((feature) => (
-            <Card key={feature.title} className="group min-h-[210px] transition hover:-translate-y-1">
-              <feature.icon className="size-9 text-primary transition group-hover:scale-110" />
-              <h3 className="mt-6 font-heading text-xl font-semibold">{feature.title}</h3>
-              <p className="mt-4 text-sm text-muted-foreground">{feature.text}</p>
+            <Card key={feature.title} className="group min-h-[190px] p-5 transition hover:-translate-y-1 sm:min-h-[210px] sm:p-6">
+              <feature.icon className="size-8 text-primary transition group-hover:scale-110 sm:size-9" />
+              <h3 className="mt-5 font-heading text-lg font-semibold sm:mt-6 sm:text-xl">{feature.title}</h3>
+              <p className="mt-3 text-sm text-muted-foreground sm:mt-4">{feature.text}</p>
             </Card>
           ))}
         </div>
