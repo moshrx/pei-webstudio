@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
@@ -75,7 +74,7 @@ export function PortfolioSection({ showTitle = true }: { showTitle?: boolean }) 
           />
         )}
 
-        <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2">
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
@@ -91,56 +90,38 @@ export function PortfolioSection({ showTitle = true }: { showTitle?: boolean }) 
                 rel="noopener noreferrer"
                 className="group block h-full"
               >
-                <Card className="flex h-full flex-col overflow-hidden p-0 transition hover:-translate-y-1">
-                  {/* Image */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div
-                      className="absolute inset-0 opacity-0 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-20"
-                      style={{ backgroundColor: project.color }}
-                    />
+                <Card className="flex h-full flex-col p-5 sm:p-6 transition hover:-translate-y-1 hover:border-primary/30">
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <span
+                      className="inline-block rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider sm:text-xs whitespace-nowrap"
+                      style={{
+                        backgroundColor: `${project.color}15`,
+                        color: project.color
+                      }}
+                    >
+                      {project.tag}
+                    </span>
+                    <span className="text-xs text-muted-foreground shrink-0">{project.year}</span>
                   </div>
 
-                  {/* Content */}
-                  <div className="flex flex-1 flex-col p-5 sm:p-6">
-                    <div className="flex items-center justify-between gap-3">
+                  <h3 className="flex items-center gap-2 font-heading text-lg font-semibold sm:text-xl">
+                    {project.title}
+                    <ArrowUpRight className="size-4 text-muted-foreground opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 shrink-0" />
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground flex-1">
+                    {project.description}
+                  </p>
+
+                  <div className="mt-4 flex flex-wrap gap-2 pt-1">
+                    {project.tech.map((t) => (
                       <span
-                        className="inline-block rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider sm:text-xs"
-                        style={{
-                          backgroundColor: `${project.color}18`,
-                          color: project.color
-                        }}
+                        key={t}
+                        className="rounded-md border border-primary/20 bg-primary/5 px-2.5 py-1 text-[10px] font-medium text-primary/80 sm:text-xs"
                       >
-                        {project.tag}
+                        {t}
                       </span>
-                      <span className="text-xs text-muted-foreground">{project.year}</span>
-                    </div>
-
-                    <h3 className="mt-3 flex items-center gap-2 font-heading text-lg font-semibold sm:text-xl">
-                      {project.title}
-                      <ArrowUpRight className="size-4 text-muted-foreground opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
-                    </h3>
-
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {project.description}
-                    </p>
-
-                    <div className="mt-4 flex flex-wrap gap-1.5 pt-1">
-                      {project.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-md border border-border bg-muted/50 px-2 py-0.5 text-[10px] font-medium text-muted-foreground sm:text-xs"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
+                    ))}
                   </div>
                 </Card>
               </a>
