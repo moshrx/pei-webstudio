@@ -11,13 +11,13 @@ export function Footer() {
           </div>
           <div className="flex gap-6 sm:gap-8">
             <Link
-              href="/legal"
+              href="#legal"
               className="text-sm text-muted-foreground transition hover:text-foreground"
             >
               Legal
             </Link>
             <a
-              href="mailto:info@peiwebstudio.ca"
+              href="mailto:peiwebstudio@gmail.com"
               className="text-sm text-muted-foreground transition hover:text-foreground"
             >
               Contact
