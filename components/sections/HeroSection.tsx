@@ -41,7 +41,7 @@ export function HeroSection() {
             <span>{heroTitle}</span>
           </motion.h1>
           <StaggerText
-            text="Drag, update, and grow with modular site building blocks your team can control without developer bottlenecks."
+            text="Update your site whenever you want. No waiting for developers. No expensive updates. Just simple, fast changes you control."
             className="mt-5 max-w-xl text-sm text-muted-foreground sm:text-base md:text-lg"
           />
           <motion.div
