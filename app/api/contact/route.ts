@@ -10,7 +10,7 @@ const bodySchema = z.object({
 });
 
 const resendApiKey = process.env.RESEND_API_KEY;
-const toEmail = process.env.CONTACT_TO_EMAIL ?? "shareef3533@gmail.com";
+const toEmail = process.env.CONTACT_TO_EMAIL ?? "peiwebstudio@gmail.com";
 const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "PEI Web Studio <onboarding@resend.dev>";
 
 export async function POST(request: Request) {

@@ -5,6 +5,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { FeaturesSection } from "@/components/sections/FeaturesSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
+import { AboutSection } from "@/components/sections/AboutSection";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Header />
       <HeroSection />
       <FeaturesSection />
+      <AboutSection />
       <PortfolioSection />
       <ContactSection />
       <Footer />
