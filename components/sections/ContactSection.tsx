@@ -72,31 +72,85 @@ export function ContactSection() {
           subtitle="Tell us about your business goals and we will map the right stack, timeline, and training handoff."
         />
         <Card className="mt-8 p-4 sm:mt-10 sm:p-6 md:p-8">
-          <form className="grid gap-4 sm:gap-5" onSubmit={handleSubmit(onSubmit)} noValidate>
+          {submitError && (
+            <div
+              role="alert"
+              className="mb-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-200"
+            >
+              <p className="font-semibold">Error sending inquiry</p>
+              <p>{submitError}</p>
+            </div>
+          )}
+          <form className="grid gap-4 sm:gap-5" onSubmit={handleSubmit(onSubmit)} noValidate aria-label="Contact inquiry form">
             <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
               <div className="space-y-2">
-                <Input placeholder="Your name" {...register("name")} />
+                <label htmlFor="name" className="text-sm font-medium">
+                  Name <span className="text-red-500" aria-label="required">*</span>
+                </label>
+                <Input
+                  id="name"
+                  placeholder="John Smith"
+                  {...register("name")}
+                  aria-invalid={errors.name ? "true" : "false"}
+                  aria-describedby={errors.name ? "name-error" : undefined}
+                />
                 {errors.name ? (
-                  <p className="text-xs text-red-500">{errors.name.message}</p>
+                  <p id="name-error" className="text-xs text-red-500" role="alert">
+                    {errors.name.message}
+                  </p>
                 ) : null}
               </div>
               <div className="space-y-2">
-                <Input type="email" placeholder="Email address" {...register("email")} />
+                <label htmlFor="email" className="text-sm font-medium">
+                  Email <span className="text-red-500" aria-label="required">*</span>
+                </label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="you@company.com"
+                  {...register("email")}
+                  aria-invalid={errors.email ? "true" : "false"}
+                  aria-describedby={errors.email ? "email-error" : undefined}
+                />
                 {errors.email ? (
-                  <p className="text-xs text-red-500">{errors.email.message}</p>
+                  <p id="email-error" className="text-xs text-red-500" role="alert">
+                    {errors.email.message}
+                  </p>
                 ) : null}
               </div>
             </div>
             <div className="space-y-2">
-              <Input placeholder="Company name" {...register("company")} />
+              <label htmlFor="company" className="text-sm font-medium">
+                Company <span className="text-red-500" aria-label="required">*</span>
+              </label>
+              <Input
+                id="company"
+                placeholder="Your Company"
+                {...register("company")}
+                aria-invalid={errors.company ? "true" : "false"}
+                aria-describedby={errors.company ? "company-error" : undefined}
+              />
               {errors.company ? (
-                <p className="text-xs text-red-500">{errors.company.message}</p>
+                <p id="company-error" className="text-xs text-red-500" role="alert">
+                  {errors.company.message}
+                </p>
               ) : null}
             </div>
             <div className="space-y-2">
-              <Textarea placeholder="What does success look like for this site?" {...register("message")} />
+              <label htmlFor="message" className="text-sm font-medium">
+                Message <span className="text-red-500" aria-label="required">*</span>
+              </label>
+              <Textarea
+                id="message"
+                placeholder="Tell us about your project goals and vision..."
+                {...register("message")}
+                aria-invalid={errors.message ? "true" : "false"}
+                aria-describedby={errors.message ? "message-error" : undefined}
+              />
               {errors.message ? (
-                <p className="text-xs text-red-500">{errors.message.message}</p>
+                <p id="message-error" className="text-xs text-red-500" role="alert">
+                  {errors.message.message}
+                </p>
               ) : null}
             </div>
             <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">

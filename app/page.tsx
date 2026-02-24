@@ -9,7 +9,7 @@ import { AboutSection } from "@/components/sections/AboutSection";
 
 export default function HomePage() {
   return (
-    <main className="pb-28">
+    <main id="main-content" className="pb-28" role="main">
       <Header />
       <HeroSection />
       <FeaturesSection />

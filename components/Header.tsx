@@ -20,6 +20,19 @@ export function Header() {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
+      {/* Skip Links */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:outline-2 focus:outline-offset-2 focus:outline-primary"
+      >
+        Skip to main content
+      </a>
+      <a
+        href="#portfolio"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-14 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:outline-2 focus:outline-offset-2 focus:outline-primary"
+      >
+        Skip to portfolio
+      </a>
       <motion.div
         initial={{ y: -32, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
