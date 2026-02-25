@@ -91,8 +91,8 @@ Violations of these terms may result in immediate termination of access to our w
       title: "Contact Information",
       content: `If you have questions about these legal terms, privacy practices, or our website, please contact us:
 
-Email: info@peiwebstudio.ca
-Phone: (902) 123-4567
+Email: peiwebstudio@gmail.com
+Phone: (647) 913-1487
 Address: Charlottetown, Prince Edward Island, Canada
 
 We'll do our best to respond to your inquiry within 5 business days.`,
