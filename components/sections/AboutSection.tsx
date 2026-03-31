@@ -4,6 +4,7 @@ import { MagneticHeading } from "@/components/MagneticHeading";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { TechExplanationToggle } from "./TechExplanationToggle";
+import { TiltCard } from "@/components/TiltCard";
 
 export function AboutSection() {
   return (
@@ -16,29 +17,41 @@ export function AboutSection() {
         
         <div className="mt-10 grid gap-6 sm:mt-12 sm:gap-8 md:grid-cols-2">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            initial={{ opacity: 0, y: 30, rotateX: 5 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{ perspective: 1000 }}
           >
-            <Card className="p-6 sm:p-8">
-              <h2 className="mb-4 text-2xl font-semibold">Our Mission</h2>
-              <p className="text-foreground/70">
-                We believe every business deserves a website that works as hard as they do. Our mission is to build revenue-ready websites that SMBs can actually manage themselves, without the technical headaches or ongoing dependencies on developers.
-              </p>
-            </Card>
+            <TiltCard className="h-full" tiltAmount={5} scale={1.01}>
+              <Card className="h-full p-6 sm:p-8 bg-card">
+                <div className="relative z-10">
+                  <h2 className="mb-4 text-2xl font-semibold">Our Mission</h2>
+                  <p className="text-foreground/70">
+                    We believe every business deserves a website that works as hard as they do. Our mission is to build revenue-ready websites that SMBs can actually manage themselves, without the technical headaches or ongoing dependencies on developers.
+                  </p>
+                </div>
+              </Card>
+            </TiltCard>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, y: 30, rotateX: 5 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{ perspective: 1000 }}
           >
-            <Card className="p-6 sm:p-8">
-              <h2 className="mb-4 text-2xl font-semibold">Our Approach</h2>
-              <p className="text-foreground/70">
-                We combine modern design with practical functionality. Every website we build is optimized for conversions, built on the right tech stack for your needs, and comes with comprehensive training so you&apos;re confident managing it.
-              </p>
-            </Card>
+            <TiltCard className="h-full" tiltAmount={5} scale={1.01}>
+              <Card className="h-full p-6 sm:p-8 bg-card">
+                <div className="relative z-10">
+                  <h2 className="mb-4 text-2xl font-semibold">Our Approach</h2>
+                  <p className="text-foreground/70">
+                    We combine modern design with practical functionality. Every website we build is optimized for conversions, built on the right tech stack for your needs, and comes with comprehensive training so you&apos;re confident managing it.
+                  </p>
+                </div>
+              </Card>
+            </TiltCard>
           </motion.div>
         </div>
 

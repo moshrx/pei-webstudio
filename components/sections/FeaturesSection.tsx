@@ -2,6 +2,7 @@ import { Globe, Palette, Settings2 } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 import { MagneticHeading } from "@/components/MagneticHeading";
+import { TiltCard } from "@/components/TiltCard";
 
 const features = [
   {
@@ -31,11 +32,15 @@ export function FeaturesSection() {
         />
         <div className="mt-8 grid gap-3 sm:mt-10 sm:gap-4 md:grid-cols-3">
           {features.map((feature) => (
-            <Card key={feature.title} className="group min-h-[190px] p-5 transition hover:-translate-y-1 sm:min-h-[210px] sm:p-6">
-              <feature.icon className="size-8 text-primary transition group-hover:scale-110 sm:size-9" />
-              <h3 className="mt-5 font-heading text-lg font-semibold sm:mt-6 sm:text-xl">{feature.title}</h3>
-              <p className="mt-3 text-sm text-muted-foreground sm:mt-4">{feature.text}</p>
-            </Card>
+            <TiltCard key={feature.title} className="h-full" tiltAmount={6} scale={1.02}>
+              <Card className="group h-full min-h-[190px] p-5 transition-colors sm:min-h-[210px] sm:p-6 bg-card">
+                <div className="relative z-10">
+                  <feature.icon className="size-8 text-primary transition-transform duration-300 group-hover:scale-110 sm:size-9" />
+                  <h3 className="mt-5 font-heading text-lg font-semibold sm:mt-6 sm:text-xl">{feature.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground sm:mt-4">{feature.text}</p>
+                </div>
+              </Card>
+            </TiltCard>
           ))}
         </div>
       </div>

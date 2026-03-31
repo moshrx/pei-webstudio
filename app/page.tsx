@@ -6,16 +6,24 @@ import { FeaturesSection } from "@/components/sections/FeaturesSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { StatsSection } from "@/components/sections/StatsSection";
+import { ProcessSection } from "@/components/sections/ProcessSection";
+import { FAQSection } from "@/components/sections/FAQSection";
+import { CTABanner } from "@/components/sections/CTABanner";
 
 export default function HomePage() {
   return (
     <main id="main-content" className="pb-28" role="main">
       <Header />
       <HeroSection />
+      <StatsSection />
       <FeaturesSection />
-      <AboutSection />
       <PortfolioSection />
+      <ProcessSection />
+      <FAQSection />
+      <CTABanner />
       <ContactSection />
+      <AboutSection />
       <Footer />
       <FloatingDock />
     </main>

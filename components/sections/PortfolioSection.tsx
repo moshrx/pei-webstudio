@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 import { MagneticHeading } from "@/components/MagneticHeading";
+import { TiltCard } from "@/components/TiltCard";
 
 const projects = [
    {
@@ -51,6 +52,17 @@ const projects = [
     tech: ["Shopify", "UI Design", "E-commerce"],
     color: "#E63946",
     image: "/assets/projects/lootbins.jpg"
+  },
+  {
+    id: 4,
+    title: "Listed PEI",
+    year: "2026",
+    link: "https://listedpei.ca",
+    tag: "Directory Platform",
+    description: "A comprehensive business directory for Prince Edward Island. Connects local businesses with customers through an intuitive search and listing experience.",
+    tech: ["Next.js", "PostgreSQL", "Full Stack"],
+    color: "#059669",
+    image: "/assets/projects/listedpei.jpg"
   }
 ];
 
@@ -90,7 +102,8 @@ export function PortfolioSection({ showTitle = true }: { showTitle?: boolean }) 
                 rel="noopener noreferrer"
                 className="group block h-full"
               >
-                <Card className="flex h-full flex-col p-5 sm:p-6 transition hover:-translate-y-1 hover:border-primary/30">
+                <TiltCard className="h-full" tiltAmount={8} scale={1.01}>
+                  <Card className="flex h-full flex-col p-5 sm:p-6 transition-colors hover:border-primary/30 bg-card">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <span
                       className="inline-block rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider sm:text-xs whitespace-nowrap"
@@ -123,7 +136,8 @@ export function PortfolioSection({ showTitle = true }: { showTitle?: boolean }) 
                       </span>
                     ))}
                   </div>
-                </Card>
+                  </Card>
+                </TiltCard>
               </a>
             </motion.div>
           ))}

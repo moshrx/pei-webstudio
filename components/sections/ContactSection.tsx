@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { TiltCard } from "@/components/TiltCard";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -71,7 +72,14 @@ export function ContactSection() {
           title="Let’s build your next revenue-ready website"
           subtitle="Tell us about your business goals and we will map the right stack, timeline, and training handoff."
         />
-        <Card className="mt-8 p-4 sm:mt-10 sm:p-6 md:p-8">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <TiltCard tiltAmount={3} scale={1.005} glareEnabled={false}>
+            <Card className="mt-8 p-4 sm:mt-10 sm:p-6 md:p-8">
           {submitError && (
             <div
               role="alert"
@@ -171,7 +179,9 @@ export function ContactSection() {
               ) : null}
             </div>
           </form>
-        </Card>
+          </Card>
+          </TiltCard>
+        </motion.div>
       </div>
     </section>
   );
