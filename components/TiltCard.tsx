@@ -41,7 +41,7 @@ function GlareOverlay({
 export function TiltCard({
   children,
   className = "",
-  glareEnabled = true,
+  glareEnabled = false,
   tiltAmount = 12,
   scale = 1.02
 }: TiltCardProps) {

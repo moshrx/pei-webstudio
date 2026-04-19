@@ -62,7 +62,6 @@ const projects = [
     description: "A comprehensive business directory for Prince Edward Island. Connects local businesses with customers through an intuitive search and listing experience.",
     tech: ["Next.js", "PostgreSQL", "Full Stack"],
     color: "#059669",
-    image: "/assets/projects/listedpei.jpg"
   }
 ];
 

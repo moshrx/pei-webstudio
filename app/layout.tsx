@@ -18,8 +18,9 @@ export const metadata: Metadata = {
   creator: "PEI Web Studio",
   metadataBase: new URL("https://peiwebstudio.ca"),
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png"
+    icon: "/favicon-32.png",
+    shortcut: "/favicon-32.png",
+    apple: "/icon-180.png",
   },
   openGraph: {
     type: "website",

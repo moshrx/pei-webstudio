@@ -65,6 +65,64 @@
   }
 }
 
+/* ─── AnimatedGradient theme-aware colors (no JS needed) ───────────── */
+:root {
+  --ag-base: radial-gradient(ellipse at 50% 0%, rgba(34,211,238,0.25) 0%, transparent 50%),
+             radial-gradient(ellipse at 80% 50%, rgba(20,184,166,0.15) 0%, transparent 40%),
+             radial-gradient(ellipse at 20% 80%, rgba(14,165,233,0.12) 0%, transparent 40%);
+  --ag-orb1: radial-gradient(circle, rgba(34,211,238,0.35) 0%, transparent 70%);
+  --ag-orb2: radial-gradient(circle, rgba(20,184,166,0.3) 0%, transparent 70%);
+  --ag-orb3: radial-gradient(circle, rgba(14,165,233,0.25) 0%, transparent 70%);
+}
+.dark {
+  --ag-base: radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.15) 0%, transparent 50%),
+             radial-gradient(ellipse at 80% 50%, rgba(20,184,166,0.1) 0%, transparent 40%),
+             radial-gradient(ellipse at 20% 80%, rgba(34,211,238,0.08) 0%, transparent 40%);
+  --ag-orb1: radial-gradient(circle, rgba(6,182,212,0.25) 0%, transparent 70%);
+  --ag-orb2: radial-gradient(circle, rgba(20,184,166,0.2) 0%, transparent 70%);
+  --ag-orb3: radial-gradient(circle, rgba(103,232,249,0.15) 0%, transparent 70%);
+}
+
+/* ─── AnimatedGradient CSS keyframes ───────────────────────────────── */
+@keyframes grad-drift-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(100px, -50px) scale(1.2);
+  }
+  66% {
+    transform: translate(50px, 100px) scale(0.9);
+  }
+}
+
+@keyframes grad-drift-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-80px, 80px) scale(0.85);
+  }
+  66% {
+    transform: translate(60px, -40px) scale(1.15);
+  }
+}
+
+@keyframes grad-drift-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(60px, -60px) scale(1.1);
+  }
+  66% {
+    transform: translate(-30px, -80px) scale(0.95);
+  }
+}
+
 @layer utilities {
   .glass {
     @apply border border-white/15 bg-white/60 shadow-glass backdrop-blur-2xl;

@@ -61,6 +61,7 @@ function DockItem({
       <Link
         ref={ref}
         href={item.href}
+        aria-label={item.label}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => {}}
         onMouseLeave={handleMouseLeave}

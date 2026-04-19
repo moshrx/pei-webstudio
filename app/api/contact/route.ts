@@ -1,23 +1,44 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 const bodySchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  company: z.string().min(2),
-  message: z.string().min(10)
+  name: z.string().min(2).max(100),
+  email: z.string().email().max(254),
+  company: z.string().min(2).max(100),
+  message: z.string().min(10).max(2000),
 });
 
 const resendApiKey = process.env.RESEND_API_KEY;
 const toEmail = process.env.CONTACT_TO_EMAIL ?? "peiwebstudio@gmail.com";
 const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "PEI Web Studio <onboarding@resend.dev>";
 
-export async function POST(request: Request) {
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function jsonResponse(body: Record<string, string | boolean>, status = 200) {
+  return NextResponse.json(body, {
+    status,
+    headers: {
+      "Cache-Control": "no-store"
+    }
+  });
+}
+
+export async function POST(request: NextRequest) {
   if (!resendApiKey) {
-    return NextResponse.json(
+    return jsonResponse(
       { error: "Email service is not configured. Add RESEND_API_KEY." },
-      { status: 500 }
+      500
     );
   }
 
@@ -25,7 +46,7 @@ export async function POST(request: Request) {
   const parsed = bodySchema.safeParse(json);
 
   if (!parsed.success) {
-    return NextResponse.json({ error: "Invalid form input." }, { status: 400 });
+    return jsonResponse({ error: "Invalid form input." }, 400);
   }
 
   const { name, email, company, message } = parsed.data;
@@ -45,15 +66,15 @@ export async function POST(request: Request) {
 
   const html = `
     <h2>New contact inquiry from peiwebstudio.ca</h2>
-    <p><strong>Name:</strong> ${name}</p>
-    <p><strong>Email:</strong> ${email}</p>
-    <p><strong>Company:</strong> ${company}</p>
+    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+    <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+    <p><strong>Company:</strong> ${escapeHtml(company)}</p>
     <p><strong>Message:</strong></p>
-    <p>${message.replace(/\n/g, "<br />")}</p>
+    <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
   `;
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: fromEmail,
       to: [toEmail],
       replyTo: email,
@@ -62,11 +83,33 @@ export async function POST(request: Request) {
       html
     });
 
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json(
+    if (error) {
+      const isResendTestingRestriction =
+        error.message?.includes("You can only send testing emails to your own email address") ??
+        false;
+
+      if (isResendTestingRestriction) {
+        return jsonResponse(
+          {
+            error:
+              "Contact email is still in test mode. Verify a domain in Resend and set CONTACT_FROM_EMAIL to an address on that domain."
+          },
+          500
+        );
+      }
+
+      return jsonResponse(
+        { error: error.message || "Unable to send right now. Please try again in a moment." },
+        500
+      );
+    }
+
+    return jsonResponse({ ok: true });
+  } catch (error) {
+    console.error("Contact email send failed", error);
+    return jsonResponse(
       { error: "Unable to send right now. Please try again in a moment." },
-      { status: 500 }
+      500
     );
   }
 }

@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { TiltCard } from "@/components/TiltCard";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -45,13 +44,20 @@ export function ContactSection() {
     setSubmitError(null);
     setSubmitted(false);
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(values)
-    });
+    let response: Response;
+
+    try {
+      response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(values)
+      });
+    } catch {
+      setSubmitError("Could not send inquiry. Please check your connection and try again.");
+      return;
+    }
 
     if (!response.ok) {
       const result = (await response.json().catch(() => null)) as
@@ -78,109 +84,112 @@ export function ContactSection() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <TiltCard tiltAmount={3} scale={1.005} glareEnabled={false}>
-            <Card className="mt-8 p-4 sm:mt-10 sm:p-6 md:p-8">
-          {submitError && (
-            <div
-              role="alert"
-              className="mb-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-200"
+          <Card className="mt-8 p-4 sm:mt-10 sm:p-6 md:p-8">
+            {submitError && (
+              <div
+                role="alert"
+                className="mb-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-200"
+              >
+                <p className="font-semibold">Error sending inquiry</p>
+                <p>{submitError}</p>
+              </div>
+            )}
+            <form
+              className="grid gap-4 sm:gap-5"
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+              aria-label="Contact inquiry form"
             >
-              <p className="font-semibold">Error sending inquiry</p>
-              <p>{submitError}</p>
-            </div>
-          )}
-          <form className="grid gap-4 sm:gap-5" onSubmit={handleSubmit(onSubmit)} noValidate aria-label="Contact inquiry form">
-            <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
+              <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium">
+                    Name <span className="text-red-500" aria-label="required">*</span>
+                  </label>
+                  <Input
+                    id="name"
+                    placeholder="John Smith"
+                    {...register("name")}
+                    aria-invalid={errors.name ? "true" : "false"}
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                  />
+                  {errors.name ? (
+                    <p id="name-error" className="text-xs text-red-500" role="alert">
+                      {errors.name.message}
+                    </p>
+                  ) : null}
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium">
+                    Email <span className="text-red-500" aria-label="required">*</span>
+                  </label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="you@company.com"
+                    {...register("email")}
+                    aria-invalid={errors.email ? "true" : "false"}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                  />
+                  {errors.email ? (
+                    <p id="email-error" className="text-xs text-red-500" role="alert">
+                      {errors.email.message}
+                    </p>
+                  ) : null}
+                </div>
+              </div>
               <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-medium">
-                  Name <span className="text-red-500" aria-label="required">*</span>
+                <label htmlFor="company" className="text-sm font-medium">
+                  Company <span className="text-red-500" aria-label="required">*</span>
                 </label>
                 <Input
-                  id="name"
-                  placeholder="John Smith"
-                  {...register("name")}
-                  aria-invalid={errors.name ? "true" : "false"}
-                  aria-describedby={errors.name ? "name-error" : undefined}
+                  id="company"
+                  placeholder="Your Company"
+                  {...register("company")}
+                  aria-invalid={errors.company ? "true" : "false"}
+                  aria-describedby={errors.company ? "company-error" : undefined}
                 />
-                {errors.name ? (
-                  <p id="name-error" className="text-xs text-red-500" role="alert">
-                    {errors.name.message}
+                {errors.company ? (
+                  <p id="company-error" className="text-xs text-red-500" role="alert">
+                    {errors.company.message}
                   </p>
                 ) : null}
               </div>
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium">
-                  Email <span className="text-red-500" aria-label="required">*</span>
+                <label htmlFor="message" className="text-sm font-medium">
+                  Message <span className="text-red-500" aria-label="required">*</span>
                 </label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="you@company.com"
-                  {...register("email")}
-                  aria-invalid={errors.email ? "true" : "false"}
-                  aria-describedby={errors.email ? "email-error" : undefined}
+                <Textarea
+                  id="message"
+                  placeholder="Tell us about your project goals and vision..."
+                  {...register("message")}
+                  aria-invalid={errors.message ? "true" : "false"}
+                  aria-describedby={errors.message ? "message-error" : undefined}
                 />
-                {errors.email ? (
-                  <p id="email-error" className="text-xs text-red-500" role="alert">
-                    {errors.email.message}
+                {errors.message ? (
+                  <p id="message-error" className="text-xs text-red-500" role="alert">
+                    {errors.message.message}
                   </p>
                 ) : null}
               </div>
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="company" className="text-sm font-medium">
-                Company <span className="text-red-500" aria-label="required">*</span>
-              </label>
-              <Input
-                id="company"
-                placeholder="Your Company"
-                {...register("company")}
-                aria-invalid={errors.company ? "true" : "false"}
-                aria-describedby={errors.company ? "company-error" : undefined}
-              />
-              {errors.company ? (
-                <p id="company-error" className="text-xs text-red-500" role="alert">
-                  {errors.company.message}
-                </p>
-              ) : null}
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium">
-                Message <span className="text-red-500" aria-label="required">*</span>
-              </label>
-              <Textarea
-                id="message"
-                placeholder="Tell us about your project goals and vision..."
-                {...register("message")}
-                aria-invalid={errors.message ? "true" : "false"}
-                aria-describedby={errors.message ? "message-error" : undefined}
-              />
-              {errors.message ? (
-                <p id="message-error" className="text-xs text-red-500" role="alert">
-                  {errors.message.message}
-                </p>
-              ) : null}
-            </div>
-            <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-              <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
-                {isSubmitting ? "Sending..." : "Send Inquiry"}
-              </Button>
-              {submitted ? (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-sm text-emerald-500"
-                >
-                  Thanks, we’ll reach out shortly.
-                </motion.p>
-              ) : null}
-              {submitError ? (
-                <p className="text-sm text-red-500 sm:max-w-[420px]">{submitError}</p>
-              ) : null}
-            </div>
-          </form>
+              <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
+                  {isSubmitting ? "Sending..." : "Send Inquiry"}
+                </Button>
+                {submitted ? (
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-sm text-emerald-500"
+                  >
+                    Thanks, we’ll reach out shortly.
+                  </motion.p>
+                ) : null}
+                {submitError ? (
+                  <p className="text-sm text-red-500 sm:max-w-[420px]">{submitError}</p>
+                ) : null}
+              </div>
+            </form>
           </Card>
-          </TiltCard>
         </motion.div>
       </div>
     </section>

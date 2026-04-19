@@ -1,22 +1,12 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Check, Calendar } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { StaggerText } from "@/components/StaggerText";
 import { AnimatedGradient } from "@/components/AnimatedGradient";
-
-const InteractiveOrbScene = dynamic(
-  () => import("@/components/three/InteractiveOrbScene").then((mod) => mod.InteractiveOrbScene),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="h-[300px] w-full animate-pulse rounded-2xl bg-muted/60 sm:h-[360px] md:h-[520px]" />
-    )
-  }
-);
+import { PEILandscape } from "@/components/PEILandscape";
 
 export function HeroSection() {
   return (
@@ -90,26 +80,6 @@ export function HeroSection() {
               </a>
             </Button>
           </motion.div>
-          
-          {/* Social proof mini */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            className="mt-6 flex items-center gap-3 text-sm text-muted-foreground"
-          >
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-background bg-gradient-to-br from-primary/80 to-primary text-xs font-medium text-primary-foreground"
-                >
-                  {String.fromCharCode(64 + i)}
-                </div>
-              ))}
-            </div>
-            <span>Trusted by 15+ local businesses</span>
-          </motion.div>
         </div>
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -117,8 +87,8 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="relative rounded-3xl border border-border/70 bg-noise p-2.5 sm:p-3"
         >
-          <div className="glass overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-50/80 via-sky-50/60 to-emerald-50/70 dark:from-cyan-950/40 dark:via-slate-900/30 dark:to-emerald-950/30">
-            <InteractiveOrbScene />
+          <div className="overflow-hidden rounded-2xl">
+            <PEILandscape />
           </div>
           
           {/* Floating badge */}
