@@ -1,4 +1,4 @@
-import { Globe, Palette, Settings2 } from "lucide-react";
+import { Globe, Palette, Settings2, TrendingUp, Bot, BarChart3 } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 import { MagneticHeading } from "@/components/MagneticHeading";
@@ -17,8 +17,23 @@ const features = [
   },
   {
     icon: Settings2,
-    title: "You Can Update It Yourself",
+    title: "You Own It, You Run It",
     text: "No developer needed for changes. Update prices, add photos, write blog posts—as easily as sending an email. Your team stays in control."
+  },
+  {
+    icon: TrendingUp,
+    title: "Digital Marketing That Converts",
+    text: "SEO, Google Ads, and social campaigns built around your business goals—not vanity metrics. We drive traffic that actually turns into paying customers."
+  },
+  {
+    icon: Bot,
+    title: "AI Automation for Your Business",
+    text: "From AI chatbots that answer customer questions 24/7 to automated workflows that save your team hours every week. We build smart tools tailored to how you work."
+  },
+  {
+    icon: BarChart3,
+    title: "Data-Driven Growth",
+    text: "Analytics dashboards, conversion tracking, and clear reporting so you always know what's working. Every decision backed by real numbers—not guesswork."
   }
 ];
 
@@ -27,8 +42,8 @@ export function FeaturesSection() {
     <section id="features" className="py-16 sm:py-20 md:py-28">
       <div className="mx-auto w-[min(1100px,calc(100%-1rem))] sm:w-[min(1100px,calc(100%-2rem))]">
         <MagneticHeading
-          title="What Makes Our Sites Different"
-          subtitle="Built for real business owners who want results without the tech headaches."
+          title="More Than a Website"
+          subtitle="We build the full digital engine your business needs — websites, marketing, and AI automation — all under one roof."
         />
         <div className="mt-8 grid gap-3 sm:mt-10 sm:gap-4 md:grid-cols-3">
           {features.map((feature) => (

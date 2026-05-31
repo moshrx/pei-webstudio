@@ -33,11 +33,11 @@ export function HeroSection() {
             transition={{ duration: 0.55, delay: 0.1 }}
             className="font-heading text-[2rem] font-semibold tracking-tight sm:text-5xl md:text-6xl"
           >
-            Get a Website That Actually Brings You Customers
+            Websites, Marketing & AI — Built to Grow Your Business
           </motion.h1>
-          
+
           <StaggerText
-            text="Stop losing business to competitors with better websites. We build fast, beautiful sites for PEI businesses — and you can update them yourself without touching code."
+            text="We build fast, beautiful websites, run digital marketing campaigns, and deploy AI automation — so PEI businesses can compete and win online."
             className="mt-5 max-w-xl text-sm text-muted-foreground sm:text-base md:text-lg"
           />
           
@@ -50,15 +50,15 @@ export function HeroSection() {
           >
             <span className="flex items-center gap-1">
               <Check className="size-3.5 text-emerald-500" />
-              No monthly fees
+              Web development
             </span>
             <span className="flex items-center gap-1">
               <Check className="size-3.5 text-emerald-500" />
-              Fast turnaround
+              Digital marketing
             </span>
             <span className="flex items-center gap-1">
               <Check className="size-3.5 text-emerald-500" />
-              You own everything
+              AI automation
             </span>
           </motion.div>
           
