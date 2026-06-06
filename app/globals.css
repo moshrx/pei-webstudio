@@ -3,27 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: 38 30% 97%;
-  --foreground: 222 28% 15%;
+  --background: 20 30% 98%;
+  --foreground: 16 40% 8%;
   --card: 0 0% 100%;
-  --card-foreground: 222 25% 18%;
-  --border: 222 20% 86%;
-  --primary: 196 94% 42%;
-  --primary-foreground: 210 40% 98%;
-  --muted: 210 26% 94%;
-  --muted-foreground: 220 10% 40%;
+  --card-foreground: 16 40% 8%;
+  --border: 18 20% 84%;
+  --primary: 12 82% 52%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 20 22% 93%;
+  --muted-foreground: 18 12% 42%;
 }
 
 .dark {
-  --background: 220 23% 8%;
-  --foreground: 210 40% 98%;
-  --card: 220 25% 11%;
-  --card-foreground: 210 40% 98%;
-  --border: 220 18% 22%;
-  --primary: 188 96% 46%;
-  --primary-foreground: 220 23% 8%;
-  --muted: 220 20% 14%;
-  --muted-foreground: 214 15% 72%;
+  --background: 16 30% 6%;
+  --foreground: 20 30% 97%;
+  --card: 16 28% 10%;
+  --card-foreground: 20 30% 97%;
+  --border: 16 22% 19%;
+  --primary: 10 88% 60%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 16 26% 14%;
+  --muted-foreground: 18 14% 68%;
 }
 
 @layer base {
@@ -33,7 +33,7 @@
 
   body {
     @apply bg-background text-foreground;
-    background-image: linear-gradient(120deg, rgba(14, 165, 233, 0.08), rgba(16, 185, 129, 0.05));
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   .font-heading {
@@ -65,22 +65,21 @@
   }
 }
 
-/* ─── AnimatedGradient theme-aware colors (no JS needed) ───────────── */
 :root {
-  --ag-base: radial-gradient(ellipse at 50% 0%, rgba(34,211,238,0.25) 0%, transparent 50%),
-             radial-gradient(ellipse at 80% 50%, rgba(20,184,166,0.15) 0%, transparent 40%),
-             radial-gradient(ellipse at 20% 80%, rgba(14,165,233,0.12) 0%, transparent 40%);
-  --ag-orb1: radial-gradient(circle, rgba(34,211,238,0.35) 0%, transparent 70%);
-  --ag-orb2: radial-gradient(circle, rgba(20,184,166,0.3) 0%, transparent 70%);
-  --ag-orb3: radial-gradient(circle, rgba(14,165,233,0.25) 0%, transparent 70%);
+  --ag-base:
+    linear-gradient(120deg, rgba(220,80,50,0.12), transparent 42%),
+    linear-gradient(300deg, rgba(240,120,60,0.08), transparent 44%);
+  --ag-beam1: linear-gradient(90deg, rgba(220,80,50,0.18), transparent);
+  --ag-beam2: linear-gradient(90deg, rgba(240,120,60,0.12), transparent);
+  --ag-beam3: linear-gradient(90deg, rgba(180,40,30,0.08), transparent);
 }
 .dark {
-  --ag-base: radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.15) 0%, transparent 50%),
-             radial-gradient(ellipse at 80% 50%, rgba(20,184,166,0.1) 0%, transparent 40%),
-             radial-gradient(ellipse at 20% 80%, rgba(34,211,238,0.08) 0%, transparent 40%);
-  --ag-orb1: radial-gradient(circle, rgba(6,182,212,0.25) 0%, transparent 70%);
-  --ag-orb2: radial-gradient(circle, rgba(20,184,166,0.2) 0%, transparent 70%);
-  --ag-orb3: radial-gradient(circle, rgba(103,232,249,0.15) 0%, transparent 70%);
+  --ag-base:
+    linear-gradient(120deg, rgba(220,80,50,0.10), transparent 44%),
+    linear-gradient(300deg, rgba(240,120,60,0.08), transparent 45%);
+  --ag-beam1: linear-gradient(90deg, rgba(220,80,50,0.14), transparent);
+  --ag-beam2: linear-gradient(90deg, rgba(240,120,60,0.10), transparent);
+  --ag-beam3: linear-gradient(90deg, rgba(180,40,30,0.08), transparent);
 }
 
 /* ─── AnimatedGradient CSS keyframes ───────────────────────────────── */
@@ -125,11 +124,15 @@
 
 @layer utilities {
   .glass {
-    @apply border border-white/15 bg-white/60 shadow-glass backdrop-blur-2xl;
+    @apply border border-border/70 bg-card/80 shadow-glass backdrop-blur-xl;
   }
 
   .dark .glass {
-    @apply border-white/10 bg-white/5;
+    @apply border-white/10 bg-white/[0.055];
+  }
+
+  .tech-panel {
+    background: transparent;
   }
 
   /* Accessibility utilities */
