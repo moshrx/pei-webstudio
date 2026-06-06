@@ -60,6 +60,24 @@ We may allow third-party service providers to place cookies on your device. Thes
       id: "cookies"
     },
     {
+      title: "Use of Artificial Intelligence",
+      content: `PEI Web Studio uses artificial intelligence (AI) tools as part of our design and development process. We believe in being upfront about this.
+
+What we use AI for:
+- Generating initial design concepts, copy drafts, and layout ideas
+- Writing and reviewing code to speed up development
+- Building AI-powered products and automations for clients
+- Research, planning, and problem-solving during projects
+
+What this means for you:
+Everything we deliver is reviewed, refined, and tested by a real person before it reaches you. AI helps us work faster and explore more ideas — but the judgement, quality control, and final decisions are always human.
+
+We do not use AI to replace the strategic thinking or communication that goes into your project. Any content, copy, or materials created with AI assistance will be clearly presented to you for review and approval before use.
+
+If you have questions about how AI is used in your specific project, just ask — we're happy to explain.`,
+      id: "ai-disclosure"
+    },
+    {
       title: "Disclaimer",
       content: `The information provided on our website is for general informational purposes only. While we strive to ensure accuracy, we make no warranties or representations about the completeness, accuracy, reliability, or availability of the content.
 

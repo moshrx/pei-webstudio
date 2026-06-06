@@ -22,11 +22,10 @@ const config: Config = {
         "muted-foreground": "hsl(var(--muted-foreground))"
       },
       boxShadow: {
-        glass: "0 8px 40px rgba(15, 23, 42, 0.25)"
+        glass: "0 18px 60px rgba(2, 6, 23, 0.18)"
       },
       backgroundImage: {
-        noise:
-          "radial-gradient(circle at 20% 20%, rgba(251,191,36,0.15), transparent 35%), radial-gradient(circle at 80% 0%, rgba(14,165,233,0.15), transparent 40%), radial-gradient(circle at 50% 80%, rgba(16,185,129,0.15), transparent 45%)"
+        noise: "none"
       }
     }
   },
