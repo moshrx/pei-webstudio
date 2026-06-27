@@ -6,28 +6,28 @@ import { ChevronDown, HelpCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "How do I get a quote for my website?",
-    answer: "Every project is different, so we start with a free call to understand what you need. After that, we send you a detailed quote with exactly what's included — no surprises or hidden fees."
+    question: "What does a technology upgrade include?",
+    answer: "It can include a new website, SEO structure, AI-assisted workflows, lead capture, analytics, CRM handoff, and training. We choose the pieces that create the most useful business impact."
   },
   {
-    question: "When can we get started?",
-    answer: "We can usually start right away! Once you approve the quote, we schedule a design call to map out exactly what you want. You'll see progress updates throughout so you always know what's happening."
+    question: "Do we need AI on day one?",
+    answer: "No. We only add AI where it saves time or improves customer response. Some businesses need automation immediately; others start with a faster website and add AI after the workflow is clear."
   },
   {
-    question: "Can I update the website myself?",
-    answer: "Absolutely! That's our specialty. We build sites you can easily manage without touching code. We provide comprehensive training and written documentation. Plus, we're always available if you need help."
+    question: "Can my team update the site?",
+    answer: "Yes. We build manageable systems and provide training, documentation, and practical handoff. You should not need a developer for routine content, service, or offer changes."
   },
   {
-    question: "What if I don't like the design?",
-    answer: "We work in iterations and your feedback guides every step. You'll see the design before we build anything, and we refine it until you're 100% satisfied. No surprises at launch — only a website you love."
+    question: "Will the site be fast and search-ready?",
+    answer: "Yes. Performance, technical SEO, mobile experience, semantic structure, metadata, local signals, and analytics are part of the build rather than an afterthought."
   },
   {
-    question: "Do you provide ongoing support?",
-    answer: "Yes! All our sites come with 30 days of free support after launch. After that, we offer affordable maintenance packages, or you can manage it yourself. You're never locked into anything."
+    question: "Who owns the data and accounts?",
+    answer: "You do. We help set up the right accounts, tracking, and integrations so your business keeps control of its site, analytics, automations, and marketing assets."
   },
   {
-    question: "Will my website show up on Google?",
-    answer: "Every site we build includes SEO fundamentals: fast loading, mobile-friendly design, proper meta tags, and semantic code. Many of our clients rank on the first page for their local keywords within weeks of launch."
+    question: "Do you provide ongoing optimization?",
+    answer: "Yes. After launch, we can monitor performance, improve conversion paths, run landing page tests, update content, maintain automations, and support future feature work."
   }
 ];
 
@@ -48,10 +48,10 @@ function FAQItem({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className={`rounded-2xl border transition-all ${
+      className={`rounded-lg border transition-all ${
         isOpen
           ? "border-primary/30 bg-primary/5 shadow-lg shadow-primary/5"
-          : "border-border/50 bg-background hover:border-primary/20"
+          : "border-border/50 bg-background/80 hover:border-primary/20"
       }`}
     >
       <button
@@ -99,14 +99,14 @@ export function FAQSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
+          <span className="mb-3 inline-block rounded-md bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
             FAQ
           </span>
           <h2 className="font-heading text-2xl font-semibold sm:text-3xl md:text-4xl">
-            Common Questions
+            Questions before you upgrade
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Everything you need to know before getting started
+            Clear answers on stack, AI, ownership, and support.
           </p>
         </motion.div>
 
@@ -132,7 +132,7 @@ export function FAQSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 text-center"
         >
-          <div className="inline-flex items-center gap-3 rounded-full border border-border bg-muted/50 px-6 py-3">
+          <div className="inline-flex items-center gap-3 rounded-lg border border-border bg-muted/50 px-6 py-3">
             <HelpCircle className="size-5 text-primary" />
             <span className="text-sm">Still have questions?</span>
             <a

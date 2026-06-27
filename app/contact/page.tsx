@@ -8,7 +8,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Tell PEI Web Studio about your project and get a practical recommendation on timeline, scope, and launch approach."
+    "Tell PEI Web Studio what you want to modernize and get a practical website, AI, automation, and growth recommendation."
 };
 
 export default function ContactPage() {

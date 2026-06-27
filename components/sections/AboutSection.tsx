@@ -11,8 +11,8 @@ export function AboutSection() {
     <section id="about" className="py-16 sm:py-20 md:py-28">
       <div className="mx-auto w-[min(1100px,calc(100%-1rem))] sm:w-[min(1100px,calc(100%-2rem))]">
         <MagneticHeading
-          title="About PEI Web Studio"
-          subtitle="Crafting modern, manageable websites for growing businesses in Atlantic Canada"
+          title="A studio for modern operators."
+          subtitle="PEI Web Studio helps Atlantic Canadian businesses adopt current web, AI, automation, and analytics tools without losing the human judgment that makes a local business work."
         />
         
         <div className="mt-10 grid gap-6 sm:mt-12 sm:gap-8 md:grid-cols-2">
@@ -28,7 +28,7 @@ export function AboutSection() {
                 <div className="relative z-10">
                   <h2 className="mb-4 text-2xl font-semibold">Our Mission</h2>
                   <p className="text-foreground/70">
-                    We believe every business deserves a website that works as hard as they do. Our mission is to build revenue-ready websites that SMBs can actually manage themselves, without the technical headaches or ongoing dependencies on developers.
+                    We build digital systems that make small and mid-sized businesses feel much more capable: faster sites, cleaner customer journeys, smarter follow-up, and better visibility into what is actually working.
                   </p>
                 </div>
               </Card>
@@ -47,7 +47,7 @@ export function AboutSection() {
                 <div className="relative z-10">
                   <h2 className="mb-4 text-2xl font-semibold">Our Approach</h2>
                   <p className="text-foreground/70">
-                    We combine modern design with practical functionality. Every website we build is optimized for conversions, built on the right tech stack for your needs, and comes with comprehensive training so you&apos;re confident managing it.
+                    We pair modern design and engineering with practical operating sense. Every recommendation has to earn its place: if a tool, AI workflow, or integration does not reduce friction or improve growth, it does not go in.
                   </p>
                 </div>
               </Card>
@@ -65,27 +65,27 @@ export function AboutSection() {
             <h2 className="mb-4 text-2xl font-semibold">Why Choose Us?</h2>
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
-                <h3 className="mb-2 font-semibold">Local Expertise</h3>
+                <h3 className="mb-2 font-semibold">Local Context</h3>
                 <p className="text-sm text-foreground/70">
-                  Based in Charlottetown, we understand Atlantic Canadian businesses and their unique needs.
+                  Based in Charlottetown, we understand Atlantic Canadian buying patterns, service businesses, and local search realities.
                 </p>
               </div>
               <div>
-                <h3 className="mb-2 font-semibold">Results-Driven</h3>
+                <h3 className="mb-2 font-semibold">Systems Thinking</h3>
                 <p className="text-sm text-foreground/70">
-                  We focus on conversions and growth, not just pretty designs that don&apos;t convert.
+                  We connect site design, SEO, content, forms, automations, and reporting so the whole customer path works together.
                 </p>
               </div>
               <div>
-                <h3 className="mb-2 font-semibold">Comprehensive Training</h3>
+                <h3 className="mb-2 font-semibold">Practical AI</h3>
                 <p className="text-sm text-foreground/70">
-                  You&apos;ll receive full training to manage and update your site independently.
+                  We add AI where it helps with intake, response, content, research, or operations, and avoid it where it creates noise.
                 </p>
               </div>
               <div>
-                <h3 className="mb-2 font-semibold">Modern Stack</h3>
+                <h3 className="mb-2 font-semibold">Owner Control</h3>
                 <p className="text-sm text-foreground/70">
-                  Built with Next.js, React, and other cutting-edge technologies for performance.
+                  You keep control of your accounts, analytics, content, and workflows, with training built into the handoff.
                 </p>
               </div>
             </div>
@@ -99,9 +99,9 @@ export function AboutSection() {
           className="mt-10 sm:mt-12"
         >
           <div className="mb-6 sm:mb-8">
-            <h2 className="text-2xl font-semibold sm:text-3xl">Our Technology Stack</h2>
+            <h2 className="text-2xl font-semibold sm:text-3xl">The Technology Stack</h2>
             <p className="mt-2 text-sm text-foreground/70 sm:text-base">
-              We&apos;re transparent about how we build. Here&apos;s what we use—and why it matters to your bottom line.
+              We&apos;re transparent about how we build. Here&apos;s what we use and why it matters to your bottom line.
             </p>
           </div>
           <TechExplanationToggle />

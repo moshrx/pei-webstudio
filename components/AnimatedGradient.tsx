@@ -1,17 +1,15 @@
 export function AnimatedGradient() {
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
-      {/* Static base gradient — colors switch via CSS vars in globals.css */}
       <div
         className="absolute inset-0"
         style={{ background: "var(--ag-base)" }}
       />
 
-      {/* Drifting orb 1 */}
       <div
-        className="absolute h-[500px] w-[500px] rounded-full blur-2xl"
+        className="absolute h-24 w-[55vw] blur-2xl"
         style={{
-          background: "var(--ag-orb1)",
+          background: "var(--ag-beam1)",
           left: "-20%",
           top: "-10%",
           willChange: "transform",
@@ -19,11 +17,10 @@ export function AnimatedGradient() {
         }}
       />
 
-      {/* Drifting orb 2 */}
       <div
-        className="absolute h-[400px] w-[400px] rounded-full blur-2xl"
+        className="absolute h-20 w-[48vw] blur-2xl"
         style={{
-          background: "var(--ag-orb2)",
+          background: "var(--ag-beam2)",
           right: "-10%",
           top: "20%",
           willChange: "transform",
@@ -31,11 +28,10 @@ export function AnimatedGradient() {
         }}
       />
 
-      {/* Drifting orb 3 */}
       <div
-        className="absolute h-[350px] w-[350px] rounded-full blur-2xl"
+        className="absolute h-16 w-[42vw] blur-2xl"
         style={{
-          background: "var(--ag-orb3)",
+          background: "var(--ag-beam3)",
           left: "30%",
           bottom: "0%",
           willChange: "transform",
@@ -43,7 +39,6 @@ export function AnimatedGradient() {
         }}
       />
 
-      {/* Noise texture overlay */}
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{

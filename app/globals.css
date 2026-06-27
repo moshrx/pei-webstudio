@@ -8,6 +8,8 @@
   --card: 0 0% 100%;
   --card-foreground: 16 40% 8%;
   --border: 18 20% 84%;
+  --input: 18 18% 80%;
+  --ring: 12 82% 52%;
   --primary: 12 82% 52%;
   --primary-foreground: 0 0% 100%;
   --muted: 20 22% 93%;
@@ -20,6 +22,8 @@
   --card: 16 28% 10%;
   --card-foreground: 20 30% 97%;
   --border: 16 22% 19%;
+  --input: 16 20% 26%;
+  --ring: 10 88% 60%;
   --primary: 10 88% 60%;
   --primary-foreground: 0 0% 100%;
   --muted: 16 26% 14%;

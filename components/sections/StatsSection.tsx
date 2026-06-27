@@ -2,29 +2,29 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { TrendingUp, Users, Clock } from "lucide-react";
+import { Clock, Gauge, ShieldCheck } from "lucide-react";
 
 const stats = [
   {
-    icon: TrendingUp,
+    icon: Gauge,
     value: 15,
     suffix: "+",
-    label: "Websites Delivered",
-    description: "Successfully launched"
+    label: "Digital Systems Shipped",
+    description: "Web, AI, SEO, and automation"
   },
   {
-    icon: Users,
+    icon: ShieldCheck,
     value: 100,
     suffix: "%",
-    label: "Client Satisfaction",
-    description: "Happy business owners"
+    label: "Owner Handoff",
+    description: "Training and launch support"
   },
   {
     icon: Clock,
     value: 7,
     suffix: " Days",
-    label: "Average Delivery",
-    description: "From concept to launch"
+    label: "Sprint Launches",
+    description: "Focused builds for fast movers"
   }
 ];
 
@@ -60,9 +60,8 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 
 export function StatsSection() {
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5" />
+    <section className="relative overflow-hidden border-y border-border/70 py-12 sm:py-16">
+      <div className="absolute inset-0 bg-muted/35" />
       
       <div className="relative mx-auto w-[min(1100px,calc(100%-1rem))] sm:w-[min(1100px,calc(100%-2rem))]">
         <motion.div
@@ -70,17 +69,17 @@ export function StatsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="mb-10 text-center"
         >
           <h2 className="font-heading text-2xl font-semibold sm:text-3xl">
-            Trusted by Local Businesses
+            Built for businesses moving faster than templates
           </h2>
           <p className="mt-2 text-muted-foreground">
-            Real results for real PEI businesses
+            Clean launches, measurable systems, and practical AI adoption.
           </p>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-3 max-w-3xl mx-auto">
+        <div className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-3">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -88,9 +87,9 @@ export function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative rounded-2xl border border-border/50 bg-background/50 p-6 text-center backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-background/80 hover:shadow-lg"
+              className="group relative rounded-lg border border-border/70 bg-background/70 p-5 text-center backdrop-blur-sm transition-all hover:border-primary/35 hover:bg-background/90"
             >
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+              <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-primary/25 bg-primary/10 text-primary transition-transform group-hover:scale-105">
                 <stat.icon className="size-6" />
               </div>
               <div className="text-primary">

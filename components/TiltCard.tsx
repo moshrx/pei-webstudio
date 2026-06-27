@@ -24,11 +24,11 @@ function GlareOverlay({
 
   return (
     <motion.div
-      className="pointer-events-none absolute inset-0 overflow-hidden rounded-inherit"
+      className="pointer-events-none absolute inset-0 overflow-hidden rounded-lg"
       style={{ opacity }}
     >
       <motion.div
-        className="absolute h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-white/40 via-transparent to-transparent"
+        className="absolute h-[180%] w-[70%] -translate-x-1/2 -translate-y-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/25 to-transparent"
         style={{
           left: glareX,
           top: glareY

@@ -75,8 +75,8 @@ export function ContactSection() {
     <section id="contact" className="py-16 sm:py-20 md:py-28">
       <div className="mx-auto w-[min(1100px,calc(100%-1rem))] sm:w-[min(1100px,calc(100%-2rem))]">
         <MagneticHeading
-          title="Let’s build your next revenue-ready website"
-          subtitle="Tell us about your business goals and we will map the right stack, timeline, and training handoff."
+          title="Send the upgrade brief."
+          subtitle="Tell us what feels slow, manual, outdated, or invisible online. We will map the right website, AI, automation, and growth plan."
         />
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -84,18 +84,22 @@ export function ContactSection() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <Card className="mt-8 p-4 sm:mt-10 sm:p-6 md:p-8">
+          <Card className="mt-8 overflow-hidden p-0 sm:mt-10">
+            <div className="border-b border-border/70 bg-muted/35 px-4 py-4 sm:px-6 md:px-8">
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Project Intake</p>
+              <p className="mt-2 text-sm text-muted-foreground">Fast response, clear scope, no bloated recommendations.</p>
+            </div>
             {submitError && (
               <div
                 role="alert"
-                className="mb-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-200"
+                className="m-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-200 sm:m-6 md:mx-8"
               >
                 <p className="font-semibold">Error sending inquiry</p>
                 <p>{submitError}</p>
               </div>
             )}
             <form
-              className="grid gap-4 sm:gap-5"
+              className="grid gap-4 p-4 sm:gap-5 sm:p-6 md:p-8"
               onSubmit={handleSubmit(onSubmit)}
               noValidate
               aria-label="Contact inquiry form"
@@ -107,7 +111,7 @@ export function ContactSection() {
                   </label>
                   <Input
                     id="name"
-                    placeholder="John Smith"
+                    placeholder="Your name"
                     {...register("name")}
                     aria-invalid={errors.name ? "true" : "false"}
                     aria-describedby={errors.name ? "name-error" : undefined}
@@ -141,9 +145,9 @@ export function ContactSection() {
                 <label htmlFor="company" className="text-sm font-medium">
                   Company <span className="text-red-500" aria-label="required">*</span>
                 </label>
-                <Input
-                  id="company"
-                  placeholder="Your Company"
+                  <Input
+                    id="company"
+                  placeholder="Company or project"
                   {...register("company")}
                   aria-invalid={errors.company ? "true" : "false"}
                   aria-describedby={errors.company ? "company-error" : undefined}
@@ -160,7 +164,7 @@ export function ContactSection() {
                 </label>
                 <Textarea
                   id="message"
-                  placeholder="Tell us about your project goals and vision..."
+                  placeholder="What do you want to modernize? Website, AI support, lead flow, SEO, automation, analytics..."
                   {...register("message")}
                   aria-invalid={errors.message ? "true" : "false"}
                   aria-describedby={errors.message ? "message-error" : undefined}
@@ -173,7 +177,7 @@ export function ContactSection() {
               </div>
               <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                 <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
-                  {isSubmitting ? "Sending..." : "Send Inquiry"}
+                  {isSubmitting ? "Sending..." : "Send Upgrade Brief"}
                 </Button>
                 {submitted ? (
                   <motion.p

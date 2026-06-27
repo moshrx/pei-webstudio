@@ -1,38 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageSquare, Palette, Code, Rocket, Check } from "lucide-react";
+import { Bot, Code2, Radar, Rocket, Check } from "lucide-react";
 
 const steps = [
   {
-    icon: MessageSquare,
+    icon: Radar,
     step: "01",
-    title: "Discovery Call",
-    description: "We discuss your goals, target audience, and what makes your business unique. No obligations, just clarity."
+    title: "Audit the Opportunity",
+    description: "We map your current site, offers, lead flow, tools, and growth bottlenecks so the build has a clear business target."
   },
   {
-    icon: Palette,
+    icon: Code2,
     step: "02",
-    title: "Design & Plan",
-    description: "You receive a custom design mockup. We refine it together until it perfectly represents your brand."
+    title: "Architect the System",
+    description: "We design the interface, content model, SEO structure, analytics events, and integration plan before code starts."
   },
   {
-    icon: Code,
+    icon: Bot,
     step: "03",
-    title: "Development",
-    description: "We build your site with clean, fast code. You'll get progress updates throughout the process."
+    title: "Build and Automate",
+    description: "We ship the website, connect the tools, wire automation, and add the AI-assisted pieces that fit your workflow."
   },
   {
     icon: Rocket,
     step: "04",
-    title: "Launch & Train",
-    description: "Your site goes live! We provide hands-on training so you can manage it with confidence."
+    title: "Launch and Optimize",
+    description: "We launch, train your team, monitor the signals, and tune the next moves with real performance data."
   }
 ];
 
 export function ProcessSection() {
   return (
-    <section className="py-16 sm:py-20 md:py-28 bg-muted/30">
+    <section className="border-y border-border/70 bg-muted/30 py-16 sm:py-20 md:py-28">
       <div className="mx-auto w-[min(1100px,calc(100%-1rem))] sm:w-[min(1100px,calc(100%-2rem))]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -41,20 +41,20 @@ export function ProcessSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
+          <span className="mb-3 inline-block rounded-md bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
             Our Process
           </span>
           <h2 className="font-heading text-2xl font-semibold sm:text-3xl md:text-4xl">
-            Simple 4-Step Process
+            From idea to intelligent system
           </h2>
           <p className="mt-3 text-muted-foreground">
-            A clear, simple path from idea to launch
+            A focused sprint that turns messy digital needs into a clean launch plan.
           </p>
         </motion.div>
 
         <div className="relative">
           {/* Connection line */}
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/30 to-transparent hidden md:block" />
+          <div className="absolute bottom-0 left-8 top-0 hidden w-px bg-gradient-to-b from-primary/50 via-primary/30 to-transparent md:block" />
 
           <div className="space-y-8">
             {steps.map((item, index) => (
@@ -68,10 +68,10 @@ export function ProcessSection() {
               >
                 {/* Step number & icon */}
                 <div className="relative flex-shrink-0">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/25">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary shadow-lg shadow-primary/10">
                     <item.icon className="size-7" />
                   </div>
-                  <div className="absolute -bottom-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-background text-xs font-bold text-primary border-2 border-primary">
+                  <div className="absolute -bottom-2 -right-2 flex h-6 w-6 items-center justify-center rounded-md border-2 border-primary bg-background text-xs font-bold text-primary">
                     <Check className="size-3" />
                   </div>
                 </div>
@@ -101,9 +101,9 @@ export function ProcessSection() {
         >
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90 hover:scale-105 hover:shadow-xl"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:scale-[1.02] hover:bg-primary/90 hover:shadow-xl"
           >
-            Start Your Project
+            Plan the Upgrade
             <Rocket className="size-4" />
           </a>
           <p className="mt-3 text-sm text-muted-foreground">
