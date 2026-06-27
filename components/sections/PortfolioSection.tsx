@@ -7,6 +7,15 @@ import { MagneticHeading } from "@/components/MagneticHeading";
 
 const projects = [
   {
+    id: 12,
+    title: "Mos Tire",
+    year: "2026",
+    link: "https://mostire.ca",
+    tag: "Local Business",
+    description: "A wholesale tire site for a Charlottetown, PEI supplier — clean, fast, and easy for shops and fleet buyers to find what they need.",
+    tech: ["Website", "Local Business", "Fast Loading"],
+  },
+  {
     id: 10,
     title: "PickupAI",
     year: "2026",
@@ -82,7 +91,7 @@ export function PortfolioSection({ showTitle = true }: { showTitle?: boolean }) 
           />
         )}
 
-        <div className="mt-8 sm:mt-12 divide-y divide-border/60">
+        <div className="mt-8 grid gap-4 sm:mt-12 sm:gap-5">
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
@@ -95,32 +104,32 @@ export function PortfolioSection({ showTitle = true }: { showTitle?: boolean }) 
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col gap-3 py-5 sm:flex-row sm:items-start sm:gap-6 sm:py-6 hover:bg-primary/[0.03] transition-colors duration-200 -mx-3 px-3 rounded-lg"
+                className="group flex flex-col gap-4 rounded-2xl border border-border/60 bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:bg-card hover:shadow-lg hover:shadow-primary/5 sm:flex-row sm:items-start sm:gap-8 sm:p-8"
               >
                 {/* Index number */}
-                <span className="hidden sm:block w-8 shrink-0 font-mono text-xs text-muted-foreground/50 pt-0.5 select-none">
+                <span className="hidden sm:block w-10 shrink-0 font-mono text-sm text-muted-foreground/40 transition-colors group-hover:text-primary/70 pt-1 select-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
                 {/* Tag */}
-                <span className="w-full sm:w-36 shrink-0 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                <span className="w-full sm:w-40 shrink-0 pt-1 text-xs font-semibold uppercase tracking-widest text-primary">
                   {project.tag}
                 </span>
 
                 {/* Main content */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="flex items-center gap-2 font-heading text-base font-semibold sm:text-lg leading-snug">
+                  <h3 className="flex items-center gap-2 font-heading text-xl font-semibold sm:text-2xl leading-snug">
                     {project.title}
-                    <ArrowUpRight className="size-4 text-muted-foreground opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 shrink-0" />
+                    <ArrowUpRight className="size-5 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary shrink-0" />
                   </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground max-w-xl">
+                  <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground max-w-xl sm:text-base">
                     {project.description}
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className="rounded px-2 py-0.5 font-mono text-[10px] font-medium text-muted-foreground border border-border/70 bg-muted/40"
+                        className="rounded-md px-2.5 py-1 font-mono text-[11px] font-medium text-muted-foreground border border-border/70 bg-muted/50 transition-colors group-hover:border-primary/30"
                       >
                         {t}
                       </span>
@@ -129,7 +138,7 @@ export function PortfolioSection({ showTitle = true }: { showTitle?: boolean }) 
                 </div>
 
                 {/* Year */}
-                <span className="hidden sm:block shrink-0 text-xs text-muted-foreground/60 pt-0.5 font-mono">
+                <span className="hidden sm:block shrink-0 pt-1 text-sm text-muted-foreground/50 font-mono">
                   {project.year}
                 </span>
               </a>

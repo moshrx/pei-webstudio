@@ -19,7 +19,7 @@ export function ThemeToggle() {
       aria-label="Toggle theme"
       variant="ghost"
       size="sm"
-      className="rounded-full"
+      className="rounded-md"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       {mounted && resolvedTheme === "dark" ? (

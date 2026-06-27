@@ -10,10 +10,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "PEI Web Studio | Revenue-Ready Websites for SMBs",
+  title: "PEI Web Studio | Modern Websites, AI & Automation",
   description:
-    "Modern websites your business can actually manage. Built for SMBs in Charlottetown and beyond. Fast, secure, and designed to convert.",
-  keywords: ["web design", "web development", "Next.js", "Charlottetown", "PEI", "SMB websites"],
+    "Modern websites, AI workflows, automation, analytics, and growth systems for businesses in Charlottetown, PEI, and beyond.",
+  keywords: ["web design", "AI automation", "web development", "Next.js", "Charlottetown", "PEI", "digital systems"],
   authors: [{ name: "PEI Web Studio" }],
   creator: "PEI Web Studio",
   metadataBase: new URL("https://peiwebstudio.ca"),
@@ -27,15 +27,15 @@ export const metadata: Metadata = {
     locale: "en_CA",
     url: "https://peiwebstudio.ca",
     siteName: "PEI Web Studio",
-    title: "PEI Web Studio | Revenue-Ready Websites for SMBs",
+    title: "PEI Web Studio | Modern Websites, AI & Automation",
     description:
-      "Modern websites your business can actually manage. Built for SMBs in Charlottetown and beyond."
+      "Modern websites, AI workflows, automation, analytics, and growth systems for PEI businesses."
   },
   twitter: {
     card: "summary_large_image",
-    title: "PEI Web Studio | Revenue-Ready Websites for SMBs",
+    title: "PEI Web Studio | Modern Websites, AI & Automation",
     description:
-      "Modern websites your business can actually manage. Built for SMBs in Charlottetown and beyond."
+      "Modern websites, AI workflows, automation, analytics, and growth systems for PEI businesses."
   },
   robots: {
     index: true,

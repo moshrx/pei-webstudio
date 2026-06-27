@@ -16,6 +16,8 @@ const config: Config = {
         card: "hsl(var(--card))",
         "card-foreground": "hsl(var(--card-foreground))",
         border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
         primary: "hsl(var(--primary))",
         "primary-foreground": "hsl(var(--primary-foreground))",
         muted: "hsl(var(--muted))",

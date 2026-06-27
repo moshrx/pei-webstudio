@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { BriefcaseBusiness, Layers, Mail, Sparkles } from "lucide-react";
+import { BriefcaseBusiness, Layers, Mail, Terminal } from "lucide-react";
 import { useRef, useState } from "react";
 
 const items = [
-  { href: "#hero", label: "Home", icon: Sparkles },
-  { href: "#features", label: "Features", icon: Layers },
+  { href: "#hero", label: "Home", icon: Terminal },
+  { href: "#features", label: "Systems", icon: Layers },
   { href: "#portfolio", label: "Portfolio", icon: BriefcaseBusiness },
   { href: "#contact", label: "Contact", icon: Mail }
 ];
@@ -53,7 +53,7 @@ function DockItem({
       {/* Floating label */}
       <motion.span
         style={{ opacity: labelOpacity, y: labelY }}
-        className="pointer-events-none absolute -top-1 whitespace-nowrap rounded-lg bg-primary px-2 py-1 text-[10px] font-medium text-primary-foreground shadow-lg"
+        className="pointer-events-none absolute -top-1 whitespace-nowrap rounded-md bg-primary px-2 py-1 text-[10px] font-medium text-primary-foreground shadow-lg"
       >
         {item.label}
       </motion.span>
@@ -65,7 +65,7 @@ function DockItem({
         onMouseMove={handleMouseMove}
         onMouseEnter={() => {}}
         onMouseLeave={handleMouseLeave}
-        className="group relative flex items-center justify-center rounded-2xl p-2.5 transition-colors hover:bg-muted sm:p-3"
+        className="group relative flex items-center justify-center rounded-md p-2.5 transition-colors hover:bg-muted sm:p-3"
       >
         <motion.div
           style={{ scale: iconScale, opacity: dimOpacity }}
@@ -82,7 +82,7 @@ function DockItem({
         {isThisHovered && (
           <motion.div
             layoutId="dockGlow"
-            className="absolute inset-0 rounded-2xl bg-primary/10"
+            className="absolute inset-0 rounded-md bg-primary/10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -102,7 +102,7 @@ export function FloatingDock() {
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.45, duration: 0.5 }}
-      className="fixed bottom-4 left-1/2 z-50 flex w-[calc(100%-1rem)] max-w-fit -translate-x-1/2 items-center justify-center gap-0.5 rounded-full border border-border/70 bg-background/90 p-1.5 shadow-2xl shadow-primary/5 backdrop-blur-xl sm:bottom-6 sm:gap-1 sm:p-2"
+      className="fixed bottom-4 left-1/2 z-50 flex w-[calc(100%-1rem)] max-w-fit -translate-x-1/2 items-center justify-center gap-0.5 rounded-lg border border-border/70 bg-background/90 p-1.5 shadow-2xl shadow-primary/5 backdrop-blur-xl sm:bottom-6 sm:gap-1 sm:p-2"
       onMouseLeave={() => setHoveredIndex(null)}
     >
       {items.map((item, index) => (

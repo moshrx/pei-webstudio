@@ -9,36 +9,37 @@ import { FloatingDock } from "@/components/FloatingDock";
 export const metadata: Metadata = {
   title: "Our Work",
   description:
-    "See how PEI Web Studio helps local organizations with clean, mobile-friendly, easy-to-manage websites."
+    "See how PEI Web Studio builds modern websites, AI tools, automation, and growth systems for real businesses."
 };
 
 export default function PortfolioPage() {
   return (
-    <div className="page-shell">
+    <div className="min-h-screen">
       <Header />
 
-      <section className="section pb-0">
-        <div className="container-narrow text-center">
-          <p className="section-kicker">Our Work</p>
-          <h1 className="section-title">Local Projects with Real Impact</h1>
-          <p className="section-body mx-auto max-w-2xl">
-            We focus on websites that are easy to manage, fast to load, and
-            clear for customers to use.
+      <section className="pb-0 pt-28 sm:pt-36">
+        <div className="mx-auto w-[min(900px,calc(100%-2rem))] text-center">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary">Production Work</p>
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
+            Modern systems already in the wild.
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-muted-foreground sm:text-lg">
+            Websites, AI tools, e-commerce, directories, and conversion-focused brand experiences built for real organizations.
           </p>
         </div>
       </section>
 
       <PortfolioSection showTitle={false} />
 
-      <section className="section">
-        <div className="container-narrow text-center">
-          <h2 className="section-title">Want a Site Like This?</h2>
-          <p className="section-body mx-auto max-w-xl">
-            We can build a modern, manageable website tailored to your business.
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto w-[min(900px,calc(100%-2rem))] text-center">
+          <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">Want a system like this?</h2>
+          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+            We can modernize the website, automation, and growth stack around how your business actually works.
           </p>
           <Link
             href="/contact"
-            className="btn-primary mt-8 inline-block rounded-full px-8 py-3.5 text-base font-semibold text-white"
+            className="mt-8 inline-block rounded-lg bg-primary px-8 py-3.5 text-base font-semibold text-primary-foreground transition hover:brightness-110"
           >
             Contact Us
           </Link>
