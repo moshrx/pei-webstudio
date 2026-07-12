@@ -1,7 +1,9 @@
 import type { Config } from "tailwindcss";
 
+const withOpacity = (variable: string) => `rgb(var(${variable}) / <alpha-value>)`;
+
 const config: Config = {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -11,23 +13,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        card: "hsl(var(--card))",
-        "card-foreground": "hsl(var(--card-foreground))",
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        primary: "hsl(var(--primary))",
-        "primary-foreground": "hsl(var(--primary-foreground))",
-        muted: "hsl(var(--muted))",
-        "muted-foreground": "hsl(var(--muted-foreground))"
+        page: withOpacity("--bg"),
+        body: withOpacity("--body"),
+        muted: withOpacity("--muted")
       },
-      boxShadow: {
-        glass: "0 18px 60px rgba(2, 6, 23, 0.18)"
-      },
-      backgroundImage: {
-        noise: "none"
+      fontFamily: {
+        serif: ["'Instrument Serif'", "serif"]
       }
     }
   },

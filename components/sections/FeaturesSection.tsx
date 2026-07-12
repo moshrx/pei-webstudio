@@ -1,7 +1,9 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { BarChart3, Bot, Cpu, DatabaseZap, Gauge, Workflow } from "lucide-react";
 
-import { Card } from "@/components/ui/card";
-import { MagneticHeading } from "@/components/MagneticHeading";
+import { SectionGlow } from "@/components/SectionGlow";
 import { TiltCard } from "@/components/TiltCard";
 
 const features = [
@@ -39,33 +41,57 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-16 sm:py-20 md:py-28">
-      <div className="mx-auto w-[min(1100px,calc(100%-1rem))] sm:w-[min(1100px,calc(100%-2rem))]">
-        <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-start">
-          <MagneticHeading
-            title="Your website should bring in business."
-            subtitle="We build websites and tools that save you time, bring in more customers, and keep working for you long after launch."
-          />
-          <div className="rounded-lg border border-border/70 bg-background/60 p-4 text-sm text-muted-foreground tech-panel">
-            <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">How we work</p>
+    <section id="features" className="relative overflow-hidden py-20 sm:py-28">
+      <SectionGlow className="right-0 top-1/4" />
+
+      <div className="relative mx-auto w-[min(1100px,calc(100%-2rem))]">
+        <div className="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
+          <motion.h2
+            initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-serif-display text-3xl leading-tight text-body sm:text-4xl md:text-5xl"
+          >
+            Your website should bring in business.
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="liquid-glass rounded-2xl p-6 text-sm text-body/70"
+          >
+            <p className="text-xs uppercase tracking-[0.18em] text-body/50">How we work</p>
             <p className="mt-3 leading-7">
-              We handle the design, build, and setup end to end — so you get a complete system, not just a pretty page that sits there doing nothing.
+              We handle the design, build, and setup end to end — so you get a complete
+              system, not just a pretty page that sits there doing nothing.
             </p>
-          </div>
+          </motion.div>
         </div>
-        <div className="mt-8 grid gap-3 sm:mt-10 sm:gap-4 md:grid-cols-3">
-          {features.map((feature) => (
-            <TiltCard key={feature.title} className="h-full" tiltAmount={6} scale={1.02}>
-              <Card className="group h-full min-h-[210px] bg-card p-5 transition-colors hover:border-primary/35 sm:p-6">
-                <div className="relative z-10">
-                  <div className="flex size-11 items-center justify-center rounded-md border border-primary/25 bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-105">
-                    <feature.icon className="size-6" />
+
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {features.map((feature, i) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.55, delay: (i % 3) * 0.08 }}
+            >
+              <TiltCard className="h-full" tiltAmount={6} scale={1.02}>
+                <div className="liquid-glass h-full min-h-[210px] rounded-2xl p-6 transition-colors hover:bg-body/5">
+                  <div className="liquid-glass flex size-11 items-center justify-center rounded-full text-body">
+                    <feature.icon className="size-5" />
                   </div>
-                  <h3 className="mt-5 font-heading text-lg font-semibold sm:mt-6 sm:text-xl">{feature.title}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground sm:mt-4">{feature.text}</p>
+                  <h3 className="mt-6 text-lg font-semibold text-body sm:text-xl">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-body/70">{feature.text}</p>
                 </div>
-              </Card>
-            </TiltCard>
+              </TiltCard>
+            </motion.div>
           ))}
         </div>
       </div>

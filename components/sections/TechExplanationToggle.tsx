@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Switch } from "@/components/ui/switch";
-import { Card } from "@/components/ui/card";
 
 const techExplanations = [
   {
@@ -33,54 +31,66 @@ const techExplanations = [
   }
 ];
 
+const options = [
+  { key: false, label: "Plain English" },
+  { key: true, label: "Tech Speak" }
+];
+
 export function TechExplanationToggle() {
   const [showTechSpeak, setShowTechSpeak] = useState(false);
 
   return (
     <div className="space-y-8">
-      <div className="flex items-center justify-center gap-4">
-        <span className={`text-sm font-medium transition-colors ${!showTechSpeak ? "text-foreground" : "text-foreground/60"}`}>
-          Plain English
-        </span>
-        <Switch
-          checked={showTechSpeak}
-          onCheckedChange={setShowTechSpeak}
-          aria-label="Toggle tech speak"
-        />
-        <span className={`text-sm font-medium transition-colors ${showTechSpeak ? "text-foreground" : "text-foreground/60"}`}>
-          Tech Speak
-        </span>
+      {/* Segmented switch */}
+      <div className="liquid-glass mx-auto flex w-fit rounded-full p-1">
+        {options.map((option) => {
+          const active = option.key === showTechSpeak;
+          return (
+            <button
+              key={option.label}
+              onClick={() => setShowTechSpeak(option.key)}
+              className="relative rounded-full px-5 py-2 text-sm font-medium transition-colors"
+            >
+              {active && (
+                <motion.span
+                  layoutId="techTogglePill"
+                  transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                  className="absolute inset-0 rounded-full bg-body"
+                />
+              )}
+              <span className={`relative z-10 ${active ? "text-page" : "text-body/70"}`}>
+                {option.label}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {techExplanations.map((item, index) => (
           <motion.div
             key={item.phase}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.08 }}
+            className="liquid-glass rounded-2xl p-4"
           >
-            <Card className="h-full p-3 sm:p-4">
-              <div className="mb-2 flex items-center justify-between">
-                <h3 className="text-xs font-semibold sm:text-sm">{item.phase}</h3>
-              </div>
-              <div className="relative min-h-[60px] sm:min-h-[70px]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`${item.phase}-${showTechSpeak}`}
-                    initial={{ opacity: 0, y: showTechSpeak ? 10 : -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: showTechSpeak ? -10 : 10 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute inset-0"
-                  >
-                    <p className="text-xs text-foreground/70 sm:text-sm leading-relaxed">
-                      {showTechSpeak ? item.techSpeak : item.plainEnglish}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </Card>
+            <h3 className="text-xs font-semibold text-body sm:text-sm">{item.phase}</h3>
+            <div className="relative mt-2 min-h-[70px]">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={`${item.phase}-${showTechSpeak}`}
+                  initial={{ opacity: 0, y: showTechSpeak ? 8 : -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: showTechSpeak ? -8 : 8 }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                  className="absolute inset-0 text-xs leading-relaxed text-body/60 sm:text-sm"
+                >
+                  {showTechSpeak ? item.techSpeak : item.plainEnglish}
+                </motion.p>
+              </AnimatePresence>
+            </div>
           </motion.div>
         ))}
       </div>
