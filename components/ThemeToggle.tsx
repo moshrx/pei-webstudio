@@ -1,32 +1,39 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MoonStar, SunMedium } from "lucide-react";
 import { useTheme } from "next-themes";
-
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Moon, Sun } from "lucide-react";
 
 export function ThemeToggle() {
-  const { setTheme, resolvedTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // Avoid hydration mismatch — theme is only known on the client.
+  useEffect(() => setMounted(true), []);
+
+  const isDark = resolvedTheme === "dark";
 
   return (
-    <Button
-      aria-label="Toggle theme"
-      variant="ghost"
-      size="sm"
-      className="rounded-md"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+    <button
+      type="button"
+      // Label stays generic until mounted to avoid a server/client hydration mismatch.
+      aria-label={mounted ? `Switch to ${isDark ? "light" : "dark"} theme` : "Toggle theme"}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="liquid-glass flex size-9 items-center justify-center rounded-full text-body transition-colors hover:bg-body/5"
     >
-      {mounted && resolvedTheme === "dark" ? (
-        <SunMedium className="size-4" />
+      {mounted ? (
+        <motion.span
+          key={isDark ? "dark" : "light"}
+          initial={{ opacity: 0, rotate: -30, scale: 0.8 }}
+          animate={{ opacity: 1, rotate: 0, scale: 1 }}
+          transition={{ duration: 0.25 }}
+        >
+          {isDark ? <Moon className="size-4" /> : <Sun className="size-4" />}
+        </motion.span>
       ) : (
-        <MoonStar className="size-4" />
+        <span className="size-4" />
       )}
-    </Button>
+    </button>
   );
 }

@@ -1,64 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 20 30% 98%;
-  --foreground: 16 40% 8%;
-  --card: 0 0% 100%;
-  --card-foreground: 16 40% 8%;
-  --border: 18 20% 84%;
-  --input: 18 18% 80%;
-  --ring: 12 82% 52%;
-  --primary: 12 82% 52%;
-  --primary-foreground: 0 0% 100%;
-  --muted: 20 22% 93%;
-  --muted-foreground: 18 12% 42%;
+/* ─── Theme tokens ─────────────────────────────────────────────────
+   Semantic colors expressed as R,G,B triplets so Tailwind can apply
+   opacity modifiers (e.g. text-body/70). Dark is the default identity;
+   light is a clean daylight variant of the same cinematic layout.      */
+:root,
+:root.light {
+  color-scheme: light;
+  --bg: 248 248 250;          /* page background */
+  --body: 24 24 27;           /* primary text */
+  --muted: 82 82 91;          /* secondary text */
+  --glass-tint: 255 255 255;  /* glass fill base */
+  --glass-fill: 0.55;         /* glass fill opacity */
+  --glass-border-strong: 0 0 0;
+  --glass-border-a: 0.14;     /* glass border edge alpha */
+  --glass-shadow: 0 0 0;
+  --grain-blend: multiply;
+  --grain-opacity: 0.04;
+  --scroll-bar: 24 24 27;
+  --scene-1: 236 72 46;       /* coral */
+  --scene-2: 250 140 90;
+  --scene-bg: 248 248 250;
 }
 
-.dark {
-  --background: 16 30% 6%;
-  --foreground: 20 30% 97%;
-  --card: 16 28% 10%;
-  --card-foreground: 20 30% 97%;
-  --border: 16 22% 19%;
-  --input: 16 20% 26%;
-  --ring: 10 88% 60%;
-  --primary: 10 88% 60%;
-  --primary-foreground: 0 0% 100%;
-  --muted: 16 26% 14%;
-  --muted-foreground: 18 14% 68%;
+:root.dark {
+  color-scheme: dark;
+  --bg: 0 0 0;
+  --body: 255 255 255;
+  --muted: 161 161 170;
+  --glass-tint: 255 255 255;
+  --glass-fill: 0.01;
+  --glass-border-strong: 255 255 255;
+  --glass-border-a: 0.45;
+  --glass-shadow: 255 255 255;
+  --grain-blend: overlay;
+  --grain-opacity: 0.03;
+  --scroll-bar: 255 255 255;
+  --scene-1: 236 72 46;
+  --scene-2: 120 90 220;
+  --scene-bg: 0 0 0;
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  html {
+    scroll-behavior: smooth;
+    /* Base page color lives on <html> so the fixed 3D canvas (body ::-z-10)
+       shows through the transparent <body>. */
+    background-color: rgb(var(--bg));
+    transition: background-color 0.4s ease;
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    @apply text-body antialiased;
+    background-color: transparent;
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+      "Helvetica Neue", sans-serif;
+    transition: color 0.4s ease;
   }
 
-  .font-heading {
-    font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  .font-serif-display {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 
-  .font-body {
-    font-family: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
-  }
-
-  /* Accessibility: Focus visible styles */
-  button:focus-visible,
   a:focus-visible,
+  button:focus-visible,
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible {
-    @apply outline-2 outline-offset-2 outline-primary;
+    @apply outline-none ring-2 ring-body/40 ring-offset-2;
+    --tw-ring-offset-color: rgb(var(--bg));
   }
 
-  /* Accessibility: Reduced motion */
   @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
     *,
     *::before,
     *::after {
@@ -69,77 +91,110 @@
   }
 }
 
-:root {
-  --ag-base:
-    linear-gradient(120deg, rgba(220,80,50,0.12), transparent 42%),
-    linear-gradient(300deg, rgba(240,120,60,0.08), transparent 44%);
-  --ag-beam1: linear-gradient(90deg, rgba(220,80,50,0.18), transparent);
-  --ag-beam2: linear-gradient(90deg, rgba(240,120,60,0.12), transparent);
-  --ag-beam3: linear-gradient(90deg, rgba(180,40,30,0.08), transparent);
-}
-.dark {
-  --ag-base:
-    linear-gradient(120deg, rgba(220,80,50,0.10), transparent 44%),
-    linear-gradient(300deg, rgba(240,120,60,0.08), transparent 45%);
-  --ag-beam1: linear-gradient(90deg, rgba(220,80,50,0.14), transparent);
-  --ag-beam2: linear-gradient(90deg, rgba(240,120,60,0.10), transparent);
-  --ag-beam3: linear-gradient(90deg, rgba(180,40,30,0.08), transparent);
-}
+@layer components {
+  /* ─── Liquid glass (theme-aware) ────────────────────────────────── */
+  .liquid-glass {
+    position: relative;
+    overflow: hidden;
+    background: rgb(var(--glass-tint) / var(--glass-fill));
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgb(var(--glass-shadow) / 0.1);
+  }
 
-/* ─── AnimatedGradient CSS keyframes ───────────────────────────────── */
-@keyframes grad-drift-1 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(100px, -50px) scale(1.2);
-  }
-  66% {
-    transform: translate(50px, 100px) scale(0.9);
-  }
-}
-
-@keyframes grad-drift-2 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(-80px, 80px) scale(0.85);
-  }
-  66% {
-    transform: translate(60px, -40px) scale(1.15);
-  }
-}
-
-@keyframes grad-drift-3 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(60px, -60px) scale(1.1);
-  }
-  66% {
-    transform: translate(-30px, -80px) scale(0.95);
+  .liquid-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgb(var(--glass-border-strong) / var(--glass-border-a)) 0%,
+      rgb(var(--glass-border-strong) / calc(var(--glass-border-a) * 0.33)) 20%,
+      rgb(var(--glass-border-strong) / 0) 40%,
+      rgb(var(--glass-border-strong) / 0) 60%,
+      rgb(var(--glass-border-strong) / calc(var(--glass-border-a) * 0.33)) 80%,
+      rgb(var(--glass-border-strong) / var(--glass-border-a)) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 }
 
 @layer utilities {
-  .glass {
-    @apply border border-border/70 bg-card/80 shadow-glass backdrop-blur-xl;
+  /* ─── Film grain overlay ────────────────────────────────────────── */
+  .film-grain {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: var(--grain-blend);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain-shift 0.5s steps(2) infinite;
   }
 
-  .dark .glass {
-    @apply border-white/10 bg-white/[0.055];
+  @media (prefers-reduced-motion: reduce) {
+    .film-grain {
+      animation: none;
+    }
   }
 
-  .tech-panel {
-    background: transparent;
+  @keyframes grain-shift {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-2%, 1%);
+    }
+    100% {
+      transform: translate(1%, -2%);
+    }
   }
 
-  /* Accessibility utilities */
+  /* ─── Hero marquee ──────────────────────────────────────────────── */
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee-scroll 40s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation: none;
+    }
+  }
+
+  /* ─── Blinking terminal cursor ──────────────────────────────────── */
+  @keyframes cursor-blink {
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .animate-cursor {
+    animation: cursor-blink 1s steps(1) infinite;
+  }
+
+  /* ─── Accessibility ─────────────────────────────────────────────── */
   .sr-only {
     position: absolute;
     width: 1px;
@@ -150,9 +205,5 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
-  }
-
-  .focus-visible-ring {
-    @apply outline-2 outline-offset-2 outline-primary;
   }
 }

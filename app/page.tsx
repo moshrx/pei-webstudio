@@ -13,7 +13,7 @@ import { AboutSection } from "@/components/sections/AboutSection";
 
 export default function HomePage() {
   return (
-    <main id="main-content" className="pb-28" role="main">
+    <main id="main-content" className="relative" role="main">
       <Header />
       <HeroSection />
       <StatsSection />
