@@ -21,19 +21,22 @@ export function Footer() {
               Modern websites, AI workflows, automation, and growth systems.
             </p>
           </div>
-          <div className="flex flex-wrap gap-6 sm:gap-8">
-            <Link href="/legal" className="text-sm text-body/60 transition hover:text-body">
+          <div className="-my-2 flex flex-wrap gap-x-6 gap-y-1 sm:gap-x-8">
+            <Link
+              href="/legal"
+              className="inline-flex min-h-[40px] items-center text-sm text-body/60 transition hover:text-body"
+            >
               Legal
             </Link>
             <a
               href="mailto:peiwebstudio@gmail.com"
-              className="text-sm text-body/60 transition hover:text-body"
+              className="inline-flex min-h-[40px] items-center text-sm text-body/60 transition hover:text-body"
             >
               Contact
             </a>
             <a
               href="tel:+16479131487"
-              className="text-sm text-body/60 transition hover:text-body"
+              className="inline-flex min-h-[40px] items-center text-sm text-body/60 transition hover:text-body"
             >
               (647) 913-1487
             </a>
@@ -44,7 +47,7 @@ export function Footer() {
           <p className="text-xs text-body/50">
             © 2026 PEI Web Studio. All rights reserved.{" "}
             <span className="text-body/40">
-              Developer —{" "}
+              Built by{" "}
               <a
                 href="https://moshr.ca"
                 target="_blank"

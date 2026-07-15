@@ -80,10 +80,10 @@ function LiveStack() {
 export function HeroSection() {
   return (
     <section id="hero" className="relative flex min-h-screen flex-col overflow-hidden">
-      {/* Bottom gradient melt into the page — lets the fixed 3D scene show through above. */}
+      {/* Bottom gradient melt into the page, lets the fixed 3D scene show through above. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-page via-page/40 to-transparent" />
 
-      <div className="relative z-10 flex flex-1 -translate-y-[10%] flex-col items-center justify-center px-6 py-12 text-center">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pb-12 pt-32 text-center sm:pt-28 sm:-translate-y-[6%]">
         <motion.span
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -97,7 +97,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 22, filter: "blur(6px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-serif-display mb-8 mt-6 max-w-4xl text-5xl tracking-tight text-body md:text-6xl lg:text-7xl"
+          className="font-serif-display mb-6 mt-6 max-w-4xl text-[2.5rem] leading-[1.05] tracking-tight text-body sm:mb-8 sm:text-5xl md:text-6xl lg:text-7xl"
         >
           Build the <em className="italic">digital engine</em> your business deserves.
         </motion.h1>
@@ -108,9 +108,8 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-xl text-base leading-relaxed text-body/70 md:text-lg"
         >
-          PEI Web Studio designs fast websites, AI workflows, marketing funnels, and
-          analytics systems that feel current today and stay useful as the next wave
-          arrives.
+          We build fast websites, AI workflows, marketing funnels, and analytics that
+          work for you today and keep earning their keep as your business grows.
         </motion.p>
 
         <motion.div
@@ -133,18 +132,18 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-8 flex flex-col items-center gap-4 sm:flex-row"
+          className="mt-8 flex w-full max-w-sm flex-col items-stretch gap-3 sm:w-auto sm:max-w-none sm:flex-row sm:items-center sm:gap-4"
         >
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-body px-8 py-3 font-medium text-page transition hover:bg-body/90"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-body px-8 py-3.5 font-medium text-page transition hover:bg-body/90 sm:py-3"
           >
             Start a Tech Upgrade
             <ArrowRight size={20} className="transition-transform group-hover:translate-x-0.5" />
           </a>
           <a
             href="#portfolio"
-            className="liquid-glass rounded-full px-8 py-3 text-body transition-colors hover:bg-body/5"
+            className="liquid-glass inline-flex items-center justify-center rounded-full px-8 py-3.5 text-body transition-colors hover:bg-body/5 sm:py-3"
           >
             See Our Work
           </a>

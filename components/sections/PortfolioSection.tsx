@@ -12,7 +12,7 @@ const projects = [
     link: "https://mostire.ca",
     tag: "Local Business",
     description:
-      "A wholesale tire site for a Charlottetown, PEI supplier — clean, fast, and easy for shops and fleet buyers to find what they need.",
+      "A wholesale tire site for a Charlottetown, PEI supplier. Clean, fast, and easy for shops and fleet buyers to find what they need.",
     tech: ["Website", "Local Business", "Fast Loading"]
   },
   {
@@ -30,7 +30,7 @@ const projects = [
     link: "https://lustrouz-web.vercel.app/",
     tag: "Website Design",
     description:
-      "A clean, fast website for a Toronto skincare clinic — built to turn visitors into booked appointments.",
+      "A clean, fast website for a Toronto skincare clinic, built to turn visitors into booked appointments.",
     tech: ["Website", "Booking Flow", "Google-ready"]
   },
   {
@@ -39,7 +39,7 @@ const projects = [
     link: "https://listedpei.ca",
     tag: "Connected Platform",
     description:
-      "A full business directory where listings, search, and customer enquiries all connect automatically — no manual updates needed.",
+      "A full business directory where listings, search, and customer enquiries all connect automatically, with no manual updates needed.",
     tech: ["Website", "Automation", "Analytics"]
   },
   {
@@ -57,7 +57,7 @@ const projects = [
     link: "https://www.lootbinscanada.com/",
     tag: "Online Store",
     description:
-      "A retail site built to sell — easy to browse on any device, with a clear path from product to checkout.",
+      "A retail site built to sell. Easy to browse on any device, with a clear path from product to checkout.",
     tech: ["E-commerce", "Website", "Shopify"]
   },
   {
@@ -75,7 +75,7 @@ const projects = [
     link: "https://cricketpei.ca",
     tag: "Website Design",
     description:
-      "A fast, easy-to-navigate site for PEI Cricket — members can find match updates without digging through a cluttered page.",
+      "A fast, easy-to-navigate site for PEI Cricket, so members can find match updates without digging through a cluttered page.",
     tech: ["Website", "Fast Loading", "Easy to Update"]
   }
 ];

@@ -72,11 +72,11 @@ What we use AI for:
 - Research, planning, and problem-solving during projects
 
 What this means for you:
-Everything we deliver is reviewed, refined, and tested by a real person before it reaches you. AI helps us work faster and explore more ideas — but the judgement, quality control, and final decisions are always human.
+Everything we deliver is reviewed, refined, and tested by a real person before it reaches you. AI helps us work faster and explore more ideas, but the judgement, quality control, and final decisions are always human.
 
 We do not use AI to replace the strategic thinking or communication that goes into your project. Any content, copy, or materials created with AI assistance will be clearly presented to you for review and approval before use.
 
-If you have questions about how AI is used in your specific project, just ask — we're happy to explain.`
+If you have questions about how AI is used in your specific project, just ask. We're happy to explain.`
   },
   {
     title: "Disclaimer",

@@ -9,7 +9,7 @@ export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Avoid hydration mismatch — theme is only known on the client.
+  // Avoid hydration mismatch since theme is only known on the client.
   useEffect(() => setMounted(true), []);
 
   const isDark = resolvedTheme === "dark";

@@ -46,7 +46,7 @@ export function Scene3D() {
     const material = new THREE.MeshBasicMaterial({
       wireframe: true,
       transparent: true,
-      opacity: 0.5
+      opacity: 0.4
     });
     const sphere = new THREE.Mesh(geometry, material);
     scene.add(sphere);
@@ -111,7 +111,7 @@ export function Scene3D() {
     const tick = () => {
       const t = clock.getElapsedTime();
 
-      // Vertex distortion — gentle noise pulsing on the sphere surface.
+      // Vertex distortion: gentle noise pulsing on the sphere surface.
       for (let i = 0; i < basePositions.length; i += 3) {
         const bx = basePositions[i];
         const by = basePositions[i + 1];

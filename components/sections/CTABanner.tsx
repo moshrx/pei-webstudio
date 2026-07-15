@@ -48,9 +48,8 @@ export function CTABanner() {
                 Your competitors are upgrading. Make the smarter move first.
               </h2>
               <p className="mt-4 max-w-2xl text-body/70">
-                We will identify the fastest path to a modern website, AI-assisted
-                operations, and measurable acquisition without bloating your business with
-                tools you do not need.
+                We&apos;ll find the fastest way to a modern website, smarter day-to-day
+                operations, and more customers, without piling on tools you don&apos;t need.
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">

@@ -29,7 +29,9 @@ const stats = [
 function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  // `amount: 0.2` fires when 20% of the element is visible, which is reliable on
+  // short mobile viewports (a large negative margin could never be satisfied).
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   useEffect(() => {
     if (!isInView) return;
@@ -47,6 +49,16 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
     const raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [isInView, value]);
+
+  // Independent safety net: if the in-view animation never triggers (a missed
+  // IntersectionObserver on a short viewport, reduced motion, or a background
+  // tab), still land on the final value so a stat never sticks at 0.
+  useEffect(() => {
+    const settle = window.setTimeout(() => {
+      setCount((c) => (c < value ? value : c));
+    }, 2500);
+    return () => window.clearTimeout(settle);
+  }, [value]);
 
   return (
     <span ref={ref} className="font-serif-display text-5xl italic text-body">
