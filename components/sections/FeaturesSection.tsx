@@ -15,7 +15,7 @@ const features = [
   {
     icon: Bot,
     title: "AI that handles the small stuff",
-    text: "Answer common questions, qualify leads, and follow up with new inquiries automatically — so you spend time on real customers, not inbox management."
+    text: "It answers common questions, qualifies leads, and follows up with new inquiries on its own. You get to spend your time on real customers instead of your inbox."
   },
   {
     icon: Workflow,
@@ -25,12 +25,12 @@ const features = [
   {
     icon: Gauge,
     title: "Fast and reliable",
-    text: "Pages load quickly on any device, the site stays online, and nothing breaks after launch. Your visitors won't wait — and they won't leave."
+    text: "Pages load quickly on any device, the site stays online, and nothing breaks after launch. Your visitors won't have to wait, so they won't leave."
   },
   {
     icon: DatabaseZap,
     title: "Know what's working",
-    text: "See where your customers are coming from, which pages they visit, and what's turning them into buyers — in plain language, not confusing graphs."
+    text: "See where your customers come from, which pages they visit, and what turns them into buyers. We put it in plain language, not confusing graphs."
   },
   {
     icon: BarChart3,
@@ -65,8 +65,8 @@ export function FeaturesSection() {
           >
             <p className="text-xs uppercase tracking-[0.18em] text-body/50">How we work</p>
             <p className="mt-3 leading-7">
-              We handle the design, build, and setup end to end — so you get a complete
-              system, not just a pretty page that sits there doing nothing.
+              We handle the design, build, and setup from start to finish. You get a
+              complete system, not just a pretty page that sits there doing nothing.
             </p>
           </motion.div>
         </div>

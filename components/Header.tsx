@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -18,6 +18,21 @@ const navItems = [
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  // Lock body scroll and close on Escape while the mobile menu is open.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
 
   const handleNavClick = (href: string) => {
     if (pathname !== "/") {
@@ -99,14 +114,35 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="pointer-events-auto fixed inset-0 z-40 flex flex-col items-center justify-center gap-2 md:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
+            className="pointer-events-auto fixed inset-0 z-[60] md:hidden"
           >
-            <div className="liquid-glass absolute inset-0 bg-page/80" />
+            {/* Backdrop, tap anywhere to close */}
+            <button
+              tabIndex={-1}
+              aria-label="Close menu"
+              onClick={() => setMenuOpen(false)}
+              className="absolute inset-0 h-full w-full cursor-default bg-page/90 backdrop-blur-md"
+            />
+
+            {/* Explicit close button, top-right, above the backdrop and nav */}
+            <button
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close navigation menu"
+              className="liquid-glass absolute right-6 top-6 z-20 flex size-11 items-center justify-center rounded-full text-body"
+            >
+              <X className="size-5" />
+            </button>
+
+            {/* Container ignores pointer events so only the buttons are targets;
+                keeps the backdrop/close reachable everywhere else. */}
             <motion.nav
               initial="hidden"
               animate="show"
               variants={{ show: { transition: { staggerChildren: 0.07 } } }}
-              className="relative flex flex-col items-center gap-6"
+              className="pointer-events-none relative z-10 flex h-full flex-col items-center justify-center gap-2"
             >
               {navItems.map((item) => (
                 <motion.button
@@ -119,7 +155,7 @@ export function Header() {
                     handleNavClick(item.href);
                     setMenuOpen(false);
                   }}
-                  className="font-serif-display text-4xl text-body/80 transition-colors hover:text-body"
+                  className="font-serif-display pointer-events-auto px-8 py-3 text-4xl text-body/80 transition-colors hover:text-body"
                 >
                   {item.label}
                 </motion.button>
@@ -133,7 +169,7 @@ export function Header() {
                   handleNavClick("#contact");
                   setMenuOpen(false);
                 }}
-                className="liquid-glass mt-4 rounded-full px-8 py-3 text-body"
+                className="liquid-glass pointer-events-auto mt-6 rounded-full px-8 py-3.5 text-body"
               >
                 Start a Project
               </motion.button>

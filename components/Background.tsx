@@ -10,5 +10,15 @@ const Scene3D = dynamic(
 );
 
 export function Background() {
-  return <Scene3D />;
+  return (
+    <>
+      <Scene3D />
+      {/* Readability scrim over the 3D scene, heavier on small screens where
+          text sits closer to the moving background. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 -z-[9] bg-page/40 sm:bg-page/15"
+      />
+    </>
+  );
 }

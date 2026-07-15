@@ -41,9 +41,9 @@ export function AboutSection() {
           A studio for modern operators.
         </motion.h2>
         <p className="mb-12 max-w-2xl text-body/60">
-          PEI Web Studio helps Atlantic Canadian businesses adopt current web, AI,
-          automation, and analytics tools without losing the human judgment that makes a
-          local business work.
+          We help Atlantic Canadian businesses put modern web, AI, automation, and
+          analytics tools to work, without losing the human judgment that makes a local
+          business tick.
         </p>
 
         <div className="grid gap-4 md:grid-cols-2">

@@ -84,8 +84,8 @@ export function ContactSection() {
           Send the upgrade brief.
         </motion.h2>
         <p className="mb-10 max-w-2xl text-body/60">
-          Tell us what feels slow, manual, outdated, or invisible online. We will map the
-          right website, AI, automation, and growth plan.
+          Tell us what feels slow, manual, outdated, or hard to find online. We&apos;ll put
+          together the right plan for your website, AI, automation, and growth.
         </p>
 
         <motion.div
@@ -102,7 +102,7 @@ export function ContactSection() {
               </div>
               <h3 className="font-serif-display text-2xl text-body">Brief received.</h3>
               <p className="max-w-md text-body/60">
-                Thanks — we&apos;ll review what you sent and reach out shortly with a
+                Thanks for reaching out. We&apos;ll review what you sent and get back to you shortly with a
                 practical plan.
               </p>
             </div>
