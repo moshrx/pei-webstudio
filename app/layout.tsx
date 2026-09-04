@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 
-import { Background } from "@/components/Background";
-import { FilmGrain } from "@/components/FilmGrain";
-import { ScrollProgress } from "@/components/ScrollProgress";
+import { SiteChrome } from "@/components/SiteChrome";
 import { ThemeProvider } from "@/components/providers";
 import "./globals.css";
 
@@ -56,10 +54,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen text-body antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Background />
-          <ScrollProgress />
+          <SiteChrome />
           {children}
-          <FilmGrain />
         </ThemeProvider>
       </body>
     </html>
