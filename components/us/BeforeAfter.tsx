@@ -126,7 +126,7 @@ export function BeforeAfter() {
               aria-selected={pane === key}
               aria-controls={`pane-${key}`}
               onClick={() => setPane(key)}
-              className={`flex flex-1 items-center justify-center gap-1.5 rounded-full py-2.5 text-sm font-extrabold uppercase tracking-wide transition ${
+              className={`flex min-h-[46px] flex-1 items-center justify-center gap-1.5 rounded-full py-2.5 text-sm font-extrabold uppercase tracking-wide transition ${
                 pane === key
                   ? key === "before"
                     ? "bg-[#ff2d78] text-white"

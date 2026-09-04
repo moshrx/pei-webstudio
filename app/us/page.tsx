@@ -360,7 +360,7 @@ export default function USFixPage() {
 
           <a
             href="https://peiwebstudio.ca"
-            className="mt-7 inline-flex items-center gap-2 text-base font-bold text-white underline decoration-[#c8ff2e] decoration-2 underline-offset-4"
+            className="mt-7 inline-flex min-h-[44px] items-center gap-2 text-base font-bold text-white underline decoration-[#c8ff2e] decoration-2 underline-offset-4"
           >
             See the full studio site
             <ArrowRight className="size-4" />
@@ -397,9 +397,9 @@ export default function USFixPage() {
             {faqs.map((faq) => (
               <details
                 key={faq.q}
-                className="group rounded-2xl border border-white/12 bg-white/[0.03] px-5 py-4 [&_summary::-webkit-details-marker]:hidden"
+                className="group rounded-2xl border border-white/12 bg-white/[0.03] px-5 [&_summary::-webkit-details-marker]:hidden"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-bold text-white">
+                <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-4 py-4 text-base font-bold text-white">
                   {faq.q}
                   <span
                     aria-hidden="true"
@@ -408,7 +408,7 @@ export default function USFixPage() {
                     +
                   </span>
                 </summary>
-                <p className="mt-3 text-[15px] leading-relaxed text-white/65">{faq.a}</p>
+                <p className="pb-5 text-[15px] leading-relaxed text-white/65">{faq.a}</p>
               </details>
             ))}
           </div>
@@ -439,14 +439,20 @@ export default function USFixPage() {
       <footer className="border-t border-white/[0.07] px-5 py-10 sm:px-6">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between">
           <p>PEI Web Studio. Websites, stores, and automation.</p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2">
-            <a href="mailto:peiwebstudio@gmail.com" className="hover:text-white">
+          <div className="flex flex-wrap items-center gap-x-5">
+            <a
+              href="mailto:peiwebstudio@gmail.com"
+              className="inline-flex min-h-[44px] items-center hover:text-white"
+            >
               peiwebstudio@gmail.com
             </a>
-            <a href="https://peiwebstudio.ca" className="hover:text-white">
+            <a
+              href="https://peiwebstudio.ca"
+              className="inline-flex min-h-[44px] items-center hover:text-white"
+            >
               peiwebstudio.ca
             </a>
-            <a href="/legal" className="hover:text-white">
+            <a href="/legal" className="inline-flex min-h-[44px] items-center hover:text-white">
               Legal
             </a>
           </div>
