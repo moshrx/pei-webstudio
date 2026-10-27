@@ -104,11 +104,12 @@ export function FloatingDock() {
       {visible && (
         <motion.nav
           aria-label="Quick navigation"
+          style={{ x: "-50%" }}
           initial={{ y: 24, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 24, opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className="liquid-glass fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full px-4 py-3"
+          className="liquid-glass fixed bottom-6 left-1/2 z-50 hidden items-center gap-1 rounded-full px-4 py-3 sm:flex"
           onMouseLeave={() => setHoveredIndex(null)}
         >
           {items.map((item, index) => (
