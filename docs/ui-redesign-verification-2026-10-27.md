@@ -34,3 +34,10 @@ were not tested. Local checks do not confirm deployment status.
 - Lighthouse mobile lab score improved from 88 to 93–95 across final runs. First
   contentful paint improved from 2.7 seconds to 0.9 seconds; layout shift remained 0.
 - The final production run passed 204 HTTP checks across 32 loaded assets.
+
+Phone viewport testing subsequently found and fixed two layout issues: section
+anchors could land early while intrinsic section heights changed, and the animated
+floating dock overrode its own centering transform and covered narrow-screen content.
+The dock is now hidden below 640px, where the fixed header menu supplies navigation.
+The mobile menu also uses compact spacing in short landscape viewports. Portrait
+checks passed at 320×568, 360×800, and 390×844; landscape passed at 844×390.
