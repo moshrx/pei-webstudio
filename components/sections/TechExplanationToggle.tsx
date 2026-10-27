@@ -4,31 +4,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const techExplanations = [
-  {
-    phase: "1. Initial Load",
-    techSpeak: "Deploying Next.js 15 Partial Prerendering (PPR) for a sub-200ms TTFB.",
-    plainEnglish: "Your site pops up instantly, so customers don't get bored and click away."
-  },
-  {
-    phase: "2. Mobile Performance",
-    techSpeak: "Eliminating JS bundle bloat via React Server Components (RSC).",
-    plainEnglish: "Everything works perfectly on a phone, even with a weak 5G signal in Cornwall."
-  },
-  {
-    phase: "3. Content Updates",
-    techSpeak: "Utilizing Type-safe Server Actions for secure, non-interactive state mutation.",
-    plainEnglish: "Changing your prices or photos is as easy as sending an email. No code needed."
-  },
-  {
-    phase: "4. Google Search",
-    techSpeak: "Dynamic Metadata API integration for automated SEO & Rich Snippet generation.",
-    plainEnglish: "We make sure Google knows exactly what you sell so you show up at the top."
-  },
-  {
-    phase: "5. Stability",
-    techSpeak: "Strict TypeScript architecture ensuring 99.9% runtime type-safety.",
-    plainEnglish: "Your website won't break. It's built on a rock-solid foundation that lasts years."
-  }
+  { phase: "1. Page loading", techSpeak: "Server-rendered pages and optimized assets where appropriate.", plainEnglish: "We keep pages focused and check loading performance before launch." },
+  { phase: "2. Mobile layout", techSpeak: "Responsive layouts tested at common viewport sizes.", plainEnglish: "Your pages adapt to phones, tablets, and desktop screens." },
+  { phase: "3. Content updates", techSpeak: "An editing workflow selected to match your project scope.", plainEnglish: "We agree on how you will update your content and show you how it works." },
+  { phase: "4. Search basics", techSpeak: "Page metadata, semantic HTML, and a sitemap for discoverability.", plainEnglish: "We help search engines understand your pages. Rankings are not guaranteed." },
+  { phase: "5. Reliability", techSpeak: "TypeScript, server-side validation, and launch checks.", plainEnglish: "We test the important paths and agree on support for future changes." }
 ];
 
 const options = [
@@ -49,6 +29,7 @@ export function TechExplanationToggle() {
             <button
               key={option.label}
               onClick={() => setShowTechSpeak(option.key)}
+              aria-pressed={active}
               className="relative rounded-full px-5 py-2 text-sm font-medium transition-colors"
             >
               {active && (
@@ -85,7 +66,7 @@ export function TechExplanationToggle() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: showTechSpeak ? -8 : 8 }}
                   transition={{ duration: 0.25, ease: "easeInOut" }}
-                  className="absolute inset-0 text-xs leading-relaxed text-body/60 sm:text-sm"
+                  className="text-xs leading-relaxed text-body/60 sm:text-sm"
                 >
                   {showTechSpeak ? item.techSpeak : item.plainEnglish}
                 </motion.p>

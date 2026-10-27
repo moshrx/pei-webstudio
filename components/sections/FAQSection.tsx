@@ -1,42 +1,18 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { Plus } from "lucide-react";
 
 import { SectionGlow } from "@/components/SectionGlow";
 
 const faqs = [
-  {
-    question: "What does a technology upgrade include?",
-    answer:
-      "It can include a new website, SEO structure, AI-assisted workflows, lead capture, analytics, CRM handoff, and training. We choose the pieces that create the most useful business impact."
-  },
-  {
-    question: "Do we need AI on day one?",
-    answer:
-      "No. We only add AI where it saves time or improves customer response. Some businesses need automation immediately; others start with a faster website and add AI after the workflow is clear."
-  },
-  {
-    question: "Can my team update the site?",
-    answer:
-      "Yes. We build manageable systems and provide training, documentation, and practical handoff. You should not need a developer for routine content, service, or offer changes."
-  },
-  {
-    question: "Will the site be fast and search-ready?",
-    answer:
-      "Yes. Performance, technical SEO, mobile experience, semantic structure, metadata, local signals, and analytics are part of the build rather than an afterthought."
-  },
-  {
-    question: "Who owns the data and accounts?",
-    answer:
-      "You do. We help set up the right accounts, tracking, and integrations so your business keeps control of its site, analytics, automations, and marketing assets."
-  },
-  {
-    question: "Do you provide ongoing optimization?",
-    answer:
-      "Yes. After launch, we can monitor performance, improve conversion paths, run landing page tests, update content, maintain automations, and support future feature work."
-  }
+  { question: "Do I need a new website or just a few fixes?", answer: "We review what you have first. If targeted changes will solve the problem, we will explain those. A full rebuild is an option when the structure or platform no longer fits your needs." },
+  { question: "How much will it cost?", answer: "New builds and larger improvements receive a written quote based on pages, content, and features. Hosting, domains, subscriptions, and ongoing support are explained separately before you commit." },
+  { question: "How long does a project take?", answer: "We agree on a timeline after reviewing the scope. Content, access to your existing site, and feedback affect delivery. You will know what we need from you before work starts." },
+  { question: "Which platforms do you work with?", answer: "We build custom websites and work with Shopify. Send your website if you are unsure of its platform; we will confirm whether we can help before quoting." },
+  { question: "Can I update the site, and who owns it?", answer: "You keep control of your domain, hosting, and accounts. We agree on an editing workflow for your project and include a walkthrough at handoff." },
+  { question: "Can you help after launch?", answer: "Yes. Updates, maintenance, and additional features can be scoped separately. We explain any recurring costs before you choose ongoing support." }
 ];
 
 function FAQItem({
@@ -61,6 +37,7 @@ function FAQItem({
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
+        aria-controls={`faq-answer-${index}`}
         className="flex w-full items-center justify-between gap-4 p-5 text-left"
       >
         <span className="font-medium text-body">{faq.question}</span>
@@ -72,19 +49,9 @@ function FAQItem({
           <Plus className="size-5 text-body/60" />
         </motion.div>
       </button>
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <p className="px-5 pb-5 leading-relaxed text-body/60">{faq.answer}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div id={`faq-answer-${index}`} hidden={!isOpen}>
+        <p className="px-5 pb-5 leading-relaxed text-body/70">{faq.answer}</p>
+      </div>
     </motion.div>
   );
 }
@@ -104,7 +71,7 @@ export function FAQSection() {
           transition={{ duration: 0.6 }}
           className="font-serif-display mb-12 text-3xl text-body sm:text-4xl md:text-5xl"
         >
-          Questions before you upgrade
+          Questions before we start
         </motion.h2>
 
         <div className="mx-auto max-w-3xl space-y-4">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Check, X } from "lucide-react";
 
 /**
@@ -108,6 +108,7 @@ function AfterFrame() {
 }
 
 export function BeforeAfter() {
+  const tabs = useRef<Partial<Record<Pane, HTMLButtonElement | null>>>({});
   const [pane, setPane] = useState<Pane>("after");
 
   return (
@@ -122,7 +123,18 @@ export function BeforeAfter() {
           {(["before", "after"] as const).map((key) => (
             <button
               key={key}
+              ref={node => { tabs.current[key] = node; }}
+              id={`tab-${key}`}
+              type="button"
               role="tab"
+              tabIndex={pane === key ? 0 : -1}
+              onKeyDown={event => {
+                if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+                event.preventDefault();
+                const next = event.key === "Home" ? "before" : event.key === "End" ? "after" : key === "before" ? "after" : "before";
+                setPane(next);
+                tabs.current[next]?.focus();
+              }}
               aria-selected={pane === key}
               aria-controls={`pane-${key}`}
               onClick={() => setPane(key)}
@@ -140,9 +152,8 @@ export function BeforeAfter() {
           ))}
         </div>
 
-        <div id={`pane-${pane}`} role="tabpanel">
-          {pane === "before" ? <BeforeFrame /> : <AfterFrame />}
-        </div>
+        <div id="pane-before" role="tabpanel" aria-labelledby="tab-before" tabIndex={0} hidden={pane !== "before"}><BeforeFrame /></div>
+        <div id="pane-after" role="tabpanel" aria-labelledby="tab-after" tabIndex={0} hidden={pane !== "after"}><AfterFrame /></div>
 
         <p className="mt-4 text-center text-sm text-white/55">
           {pane === "before"

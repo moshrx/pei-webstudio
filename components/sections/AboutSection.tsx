@@ -38,12 +38,12 @@ export function AboutSection() {
           transition={{ duration: 0.6 }}
           className="font-serif-display mb-4 text-3xl text-body sm:text-4xl md:text-5xl"
         >
-          A studio for modern operators.
+          Your local website partner.
         </motion.h2>
         <p className="mb-12 max-w-2xl text-body/60">
-          We help Atlantic Canadian businesses put modern web, AI, automation, and
-          analytics tools to work, without losing the human judgment that makes a local
-          business tick.
+          Based in Charlottetown, we work directly with business owners on new
+          websites, practical improvements, and support after launch. You get clear
+          explanations and a say in the decisions.
         </p>
 
         <div className="grid gap-4 md:grid-cols-2">
@@ -109,14 +109,16 @@ export function AboutSection() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="mt-16"
         >
-          <h3 className="text-2xl font-semibold text-body sm:text-3xl">
-            The Technology Stack
-          </h3>
+          <details className="liquid-glass rounded-2xl p-6">
+          <summary className="cursor-pointer text-lg font-semibold text-body">
+            Curious about how we build?
+          </summary>
           <p className="mb-8 mt-2 max-w-2xl text-sm text-body/60 sm:text-base">
             We&apos;re transparent about how we build. Here&apos;s what we use and why it
             matters to your bottom line.
           </p>
           <TechExplanationToggle />
+          </details>
         </motion.div>
       </div>
     </section>

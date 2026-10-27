@@ -2,8 +2,6 @@
 
 import { usePathname } from "next/navigation";
 
-import { Background } from "@/components/Background";
-import { FilmGrain } from "@/components/FilmGrain";
 import { ScrollProgress } from "@/components/ScrollProgress";
 
 /**
@@ -25,9 +23,7 @@ export function SiteChrome() {
 
   return (
     <>
-      <Background />
       <ScrollProgress />
-      <FilmGrain />
     </>
   );
 }

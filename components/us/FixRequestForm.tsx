@@ -1,19 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Check, Loader2 } from "lucide-react";
 import { z } from "zod";
 
-const formSchema = z.object({
-  name: z.string().min(2, "Tell us your name."),
-  email: z.string().email("We need a working email to reply to."),
-  website: z.string().min(3, "Paste your website address."),
-  platform: z.string().min(2, "Pick the platform your site runs on."),
-  problem: z.string().min(10, "Describe the problem in a sentence or two."),
-  company: z.string().optional()
-});
+import { fixSchema as formSchema } from "@/lib/inquiry-schema";
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -29,8 +22,11 @@ const platforms = [
 ];
 
 export function FixRequestForm() {
+  const confirmation = useRef<HTMLDivElement>(null);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  useEffect(() => { if (submitted) confirmation.current?.focus(); }, [submitted]);
 
   const {
     register,
@@ -43,7 +39,7 @@ export function FixRequestForm() {
       name: "",
       email: "",
       website: "",
-      platform: "",
+      platform: undefined,
       problem: "",
       company: ""
     }
@@ -76,7 +72,7 @@ export function FixRequestForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-3xl border border-[#c8ff2e]/30 bg-[#c8ff2e]/[0.06] p-8 text-center sm:p-10">
+      <div ref={confirmation} tabIndex={-1} role="status" className="rounded-3xl border border-[#c8ff2e]/30 bg-[#c8ff2e]/[0.06] p-8 text-center sm:p-10">
         <div className="mx-auto mb-5 flex size-14 items-center justify-center rounded-full bg-[#c8ff2e] text-black">
           <Check className="size-7" strokeWidth={3} />
         </div>
@@ -84,8 +80,8 @@ export function FixRequestForm() {
           Got it.
         </h3>
         <p className="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-white/70">
-          We read every request by hand. You&apos;ll hear back within a few hours with
-          either a payment link for the $49 fix, or an honest note if the job is
+          We read every request by hand. We will reply with
+          either a payment link for the $49 CAD fix, or an honest note if the job is
           bigger than that.
         </p>
         <p className="mt-4 text-sm font-semibold text-[#c8ff2e]">
@@ -126,7 +122,7 @@ export function FixRequestForm() {
               Your name
             </label>
             <input
-              id="fix-name"
+              id="fix-name" maxLength={100}
               autoComplete="name"
               placeholder="Jordan Reyes"
               className={fieldClass}
@@ -146,7 +142,7 @@ export function FixRequestForm() {
               Email
             </label>
             <input
-              id="fix-email"
+              id="fix-email" maxLength={254}
               type="email"
               inputMode="email"
               autoComplete="email"
@@ -169,7 +165,7 @@ export function FixRequestForm() {
             Your website address
           </label>
           <input
-            id="fix-website"
+            id="fix-website" maxLength={300}
             inputMode="url"
             autoComplete="url"
             placeholder="yourbusiness.com"
@@ -218,10 +214,10 @@ export function FixRequestForm() {
             What is broken?
           </label>
           <textarea
-            id="fix-problem"
+            id="fix-problem" maxLength={2000}
             rows={4}
             placeholder="The contact form stopped sending emails, and the menu overlaps the logo on my phone."
-            className={`${fieldClass} resize-none`}
+            className={`${fieldClass} resize-y`}
             {...register("problem")}
             aria-invalid={errors.problem ? "true" : "false"}
             aria-describedby={errors.problem ? "fix-problem-error" : undefined}
@@ -254,8 +250,8 @@ export function FixRequestForm() {
           )}
         </button>
 
-        <p className="text-center text-xs leading-relaxed text-white/45">
-          We review it first and tell you if it is a $49 job before you pay a cent.
+        <p className="text-center text-xs leading-relaxed text-white/70">
+          We confirm the scope and total before payment. <a href="/legal#privacy" className="underline underline-offset-4">Privacy policy</a>.
         </p>
       </div>
     </form>

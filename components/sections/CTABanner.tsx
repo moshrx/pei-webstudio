@@ -26,11 +26,11 @@ export function CTABanner() {
         >
           <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
             <div className="space-y-3">
-              <div className="liquid-glass flex items-center gap-2 rounded-lg px-4 py-3 font-mono text-sm text-body">
-                <span>upgrade --stack --automation --growth</span>
-                <span className="animate-cursor inline-block h-4 w-2 bg-body/80" />
+              <div className="liquid-glass flex items-center gap-2 rounded-lg px-4 py-3 text-sm text-body">
+                <span>A clearer website. A practical next step.</span>
+
               </div>
-              {["No commitment required", "Local PEI strategy", "Modern stack + training"].map(
+              {["No commitment required", "Local PEI strategy", "Clear scope + handoff"].map(
                 (item) => (
                   <div
                     key={item}
@@ -45,11 +45,11 @@ export function CTABanner() {
 
             <div>
               <h2 className="font-serif-display text-4xl text-body md:text-5xl">
-                Your competitors are upgrading. Make the smarter move first.
+                Not sure whether to fix it or start fresh?
               </h2>
               <p className="mt-4 max-w-2xl text-body/70">
-                We&apos;ll find the fastest way to a modern website, smarter day-to-day
-                operations, and more customers, without piling on tools you don&apos;t need.
+                Send us your website and what you want to improve. We will help you
+                choose a focused fix or a new build, with a clear explanation of the work.
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -57,10 +57,10 @@ export function CTABanner() {
                   href="#contact"
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-body px-8 py-3 font-medium text-page transition hover:bg-body/90"
                 >
-                  Request the Upgrade Plan
+                  Request a Website Review
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </a>
-                <span className="text-sm text-body/60">Response within 24 hours</span>
+                <span className="text-sm text-body/60">No payment needed to enquire</span>
               </div>
             </div>
           </div>

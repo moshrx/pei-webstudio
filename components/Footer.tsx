@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-body/10 py-16">
+    <footer className="relative overflow-hidden border-t border-body/10 pt-16 pb-32">
       {/* Giant faded watermark */}
       <span
         aria-hidden="true"
@@ -18,7 +18,7 @@ export function Footer() {
               PEI Web Studio, Charlottetown, Prince Edward Island
             </p>
             <p className="text-sm text-body/60">
-              Modern websites, AI workflows, automation, and growth systems.
+              New websites, practical improvements, and local support.
             </p>
           </div>
           <div className="-my-2 flex flex-wrap gap-x-6 gap-y-1 sm:gap-x-8">
