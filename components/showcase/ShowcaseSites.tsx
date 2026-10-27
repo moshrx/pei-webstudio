@@ -34,7 +34,7 @@ export function NocturneShowcase() {
             transition={{ duration: 1.6, ease }}
             className="absolute inset-0"
           >
-            <Image src="/assets/showcase/nocturne-hero.png" alt="Abstract violet glass sculpture surrounded by waves of light" fill priority sizes="100vw" className="object-cover" />
+            <Image src="/assets/showcase/nocturne-hero.jpg" alt="Abstract violet glass sculpture surrounded by waves of light" fill priority sizes="100vw" className="object-cover" />
           </motion.div>
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,8,14,.24),rgba(9,8,14,.3)_45%,#09080e_100%)]" />
           <motion.div
@@ -122,7 +122,7 @@ export function PelagicShowcase() {
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 top-20 overflow-hidden sm:left-[42%]">
           <motion.div initial={{ opacity: 0, scale: 1.08 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.3, ease }} className="absolute inset-0">
-            <Image src="/assets/showcase/pelagic-hero.png" alt="Ocean sensing buoy transmitting circular sonar signals" fill priority sizes="(min-width: 1024px) 58vw, 100vw" className="object-cover" />
+            <Image src="/assets/showcase/pelagic-hero.jpg" alt="Ocean sensing buoy transmitting circular sonar signals" fill priority sizes="(min-width: 1024px) 58vw, 100vw" className="object-cover" />
           </motion.div>
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#daf8f1_0%,rgba(218,248,241,.86)_16%,rgba(218,248,241,0)_55%)] sm:bg-[linear-gradient(90deg,#daf8f1_0%,rgba(218,248,241,.25)_20%,rgba(218,248,241,0)_55%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(0deg,#daf8f1_0%,transparent_35%)] sm:hidden" />
