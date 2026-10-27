@@ -148,12 +148,12 @@ export function PortfolioSection({ showTitle = true, featured = false }: { showT
                 className="liquid-glass group flex h-full flex-col gap-4 rounded-2xl p-5 transition-colors hover:bg-body/[0.04] sm:p-6"
               >
                 {project.art === "nocturne" && <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-[#09080e]">
-                  <Image src="/assets/showcase/nocturne-hero.png" alt="Nocturne motion website concept" fill sizes={featured ? "(min-width: 768px) 350px, 100vw" : "(min-width: 768px) 520px, 100vw"} className="object-cover transition duration-700 group-hover:scale-105" />
+                  <Image src="/assets/showcase/nocturne-hero.jpg" alt="Nocturne motion website concept" fill sizes={featured ? "(min-width: 768px) 350px, 100vw" : "(min-width: 768px) 520px, 100vw"} className="object-cover transition duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-black/20" />
                   <span className="font-serif-display absolute inset-0 flex items-center justify-center text-5xl text-white sm:text-7xl">Nocturne</span>
                 </div>}
                 {project.art === "pelagic" && <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-[#daf8f1] text-[#063a3e]">
-                  <Image src="/assets/showcase/pelagic-hero.png" alt="Pelagic marine technology website concept" fill sizes={featured ? "(min-width: 768px) 350px, 100vw" : "(min-width: 768px) 520px, 100vw"} className="object-cover transition duration-700 group-hover:scale-105" />
+                  <Image src="/assets/showcase/pelagic-hero.jpg" alt="Pelagic marine technology website concept" fill sizes={featured ? "(min-width: 768px) 350px, 100vw" : "(min-width: 768px) 520px, 100vw"} className="object-cover transition duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-r from-[#daf8f1] via-[#daf8f1]/25 to-transparent" />
                   <span className="absolute bottom-[14%] left-[8%] text-4xl font-black leading-[0.85] tracking-[-0.06em] sm:text-6xl">READ THE<br /><em className="font-serif-display font-normal">CURRENT.</em></span>
                 </div>}

@@ -1,9 +1,18 @@
 import type { Metadata, Viewport } from "next";
+import { Instrument_Serif } from "next/font/google";
 
 import { SiteChrome } from "@/components/SiteChrome";
 import { ThemeProvider } from "@/components/providers";
 import "./globals.css";
 import { pageMetadata, siteUrl } from "@/lib/site";
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-instrument-serif"
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -25,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen text-body antialiased">
+      <body className={`${instrumentSerif.variable} min-h-screen text-body antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
             "@context": "https://schema.org", "@type": "Organization", name: "PEI Web Studio",
