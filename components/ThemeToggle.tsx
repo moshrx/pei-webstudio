@@ -20,7 +20,7 @@ export function ThemeToggle() {
       // Label stays generic until mounted to avoid a server/client hydration mismatch.
       aria-label={mounted ? `Switch to ${isDark ? "light" : "dark"} theme` : "Toggle theme"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="liquid-glass flex size-9 items-center justify-center rounded-full text-body transition-colors hover:bg-body/5"
+      className="liquid-glass flex size-11 items-center justify-center rounded-full text-body transition-colors hover:bg-body/5"
     >
       {mounted ? (
         <motion.span

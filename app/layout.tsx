@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { SiteChrome } from "@/components/SiteChrome";
 import { ThemeProvider } from "@/components/providers";
 import "./globals.css";
+import { pageMetadata, siteUrl } from "@/lib/site";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -11,38 +12,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "PEI Web Studio | Modern Websites, AI & Automation",
-  description:
-    "Modern websites, AI workflows, automation, analytics, and growth systems for businesses in Charlottetown, PEI, and beyond.",
-  keywords: ["web design", "AI automation", "web development", "Next.js", "Charlottetown", "PEI", "digital systems"],
-  authors: [{ name: "PEI Web Studio" }],
-  creator: "PEI Web Studio",
-  metadataBase: new URL("https://peiwebstudio.ca"),
-  icons: {
-    icon: "/favicon-32.png",
-    shortcut: "/favicon-32.png",
-    apple: "/icon-180.png",
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_CA",
-    url: "https://peiwebstudio.ca",
-    siteName: "PEI Web Studio",
-    title: "PEI Web Studio | Modern Websites, AI & Automation",
-    description:
-      "Modern websites, AI workflows, automation, analytics, and growth systems for PEI businesses."
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "PEI Web Studio | Modern Websites, AI & Automation",
-    description:
-      "Modern websites, AI workflows, automation, analytics, and growth systems for PEI businesses."
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false
-  }
+  ...pageMetadata("Web Design & Website Improvements in PEI | PEI Web Studio", "New websites and practical website improvements for businesses in Charlottetown and across Prince Edward Island. Clear scope and personal support.", "/"),
+  metadataBase: new URL(siteUrl),
+  icons: { icon: "/favicon-32.png", shortcut: "/favicon-32.png", apple: "/icon-180.png" },
+  robots: { index: true, follow: true }
 };
 
 export default function RootLayout({
@@ -54,6 +27,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen text-body antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org", "@type": "Organization", name: "PEI Web Studio",
+            url: siteUrl, logo: `${siteUrl}/icon.png`, email: "peiwebstudio@gmail.com", telephone: "+1-647-913-1487",
+            areaServed: { "@type": "AdministrativeArea", name: "Prince Edward Island" }
+          }) }} />
           <SiteChrome />
           {children}
         </ThemeProvider>

@@ -10,22 +10,26 @@ import { FAQSection } from "@/components/sections/FAQSection";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { GeoAuditSection } from "@/components/sections/GeoAuditSection";
 
 export default function HomePage() {
   return (
-    <main id="main-content" className="relative" role="main">
+    <>
       <Header />
+    <main tabIndex={-1} id="main-content" className="relative" role="main">
       <HeroSection />
       <StatsSection />
       <FeaturesSection />
-      <PortfolioSection />
+      <PortfolioSection featured />
+      <GeoAuditSection />
+      <AboutSection />
       <ProcessSection />
       <FAQSection />
       <CTABanner />
       <ContactSection />
-      <AboutSection />
+    </main>
       <Footer />
       <FloatingDock />
-    </main>
+    </>
   );
 }

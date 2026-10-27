@@ -9,30 +9,30 @@ const steps = [
   {
     icon: Radar,
     step: "01",
-    title: "Audit the Opportunity",
+    title: "Review your needs",
     description:
-      "We map your current site, offers, lead flow, tools, and growth bottlenecks so the build has a clear business target."
+      "Tell us what you need. We review your website or plans and identify the most useful next step."
   },
   {
     icon: Code2,
     step: "02",
-    title: "Architect the System",
+    title: "Agree on a plan",
     description:
-      "We design the interface, content model, SEO structure, analytics events, and integration plan before code starts."
+      "You get a written scope, quote, and timeline before work begins. We agree on pages, content, and features together."
   },
   {
     icon: Bot,
     step: "03",
-    title: "Build and Automate",
+    title: "Build and review",
     description:
-      "We ship the website, connect the tools, wire automation, and add the AI-assisted pieces that fit your workflow."
+      "We design and build your pages, check the mobile experience, and share the work for your feedback."
   },
   {
     icon: Rocket,
     step: "04",
-    title: "Launch and Optimize",
+    title: "Launch and hand over",
     description:
-      "We launch, train your team, monitor the signals, and tune the next moves with real performance data."
+      "We check the links and forms, launch the site, and walk you through managing it. Ongoing support is agreed separately."
   }
 ];
 
@@ -53,7 +53,7 @@ export function ProcessSection() {
             Our Process
           </span>
           <h2 className="font-serif-display mt-3 text-3xl text-body sm:text-4xl md:text-5xl">
-            From idea to intelligent system
+            From first conversation to launch
           </h2>
         </motion.div>
 
@@ -106,7 +106,7 @@ export function ProcessSection() {
             href="#contact"
             className="group inline-flex items-center gap-2 rounded-full bg-body px-8 py-3 font-medium text-page transition hover:bg-body/90"
           >
-            Plan the Upgrade
+            Request a Website Review
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
           </a>
           <p className="text-sm text-body/50">Free consultation • No commitment required</p>

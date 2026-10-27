@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform, MotionValue } from "framer-motion";
+import { motion, useReducedMotion, useMotionValue, useSpring, useTransform, MotionValue } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
 interface TiltCardProps {
@@ -45,6 +45,7 @@ export function TiltCard({
   tiltAmount = 12,
   scale = 1.02
 }: TiltCardProps) {
+  const reducedMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0.5);
@@ -62,7 +63,7 @@ export function TiltCard({
   const glareY = useTransform(springY, [0, 1], [0, 100]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
+    if (!ref.current || reducedMotion) return;
     const rect = ref.current.getBoundingClientRect();
     const xPos = (e.clientX - rect.left) / rect.width;
     const yPos = (e.clientY - rect.top) / rect.height;
@@ -85,13 +86,13 @@ export function TiltCard({
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      whileHover={{ scale }}
+      whileHover={reducedMotion ? undefined : { scale }}
       transition={{ duration: 0.3 }}
     >
       <motion.div
         style={{
-          rotateX,
-          rotateY,
+          rotateX: reducedMotion ? 0 : rotateX,
+          rotateY: reducedMotion ? 0 : rotateY,
           transformStyle: "preserve-3d"
         }}
         className="h-full"

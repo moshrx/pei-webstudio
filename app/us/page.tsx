@@ -14,23 +14,25 @@ import { BeforeAfter } from "@/components/us/BeforeAfter";
 import { FixRequestForm } from "@/components/us/FixRequestForm";
 
 export const metadata: Metadata = {
-  title: "Broken Website? One Small Fix, $49 | PEI Web Studio",
+  title: "Broken Website? One Small Fix, $49 CAD | PEI Web Studio",
   description:
-    "Broken mobile layout, dead buttons, a contact form that eats messages? We fix one small thing on your website for $49, usually within 48 hours. Ask first, pay after we confirm it is a small fix.",
-  alternates: { canonical: "https://peiwebstudio.ca/us" },
+    "Broken mobile layout, dead buttons, a contact form that eats messages? We fix one small thing on your website for $49 CAD, usually within 48 hours of payment and receiving access. Ask first, pay after we confirm it is a small fix.",
+  alternates: { canonical: "https://www.peiwebstudio.ca/us" },
   openGraph: {
+    images: ["https://www.peiwebstudio.ca/opengraph-image"],
     type: "website",
-    url: "https://peiwebstudio.ca/us",
+    url: "https://www.peiwebstudio.ca/us",
     siteName: "PEI Web Studio",
-    title: "Got a Broken Website? One Small Fix, $49",
+    title: "Got a Broken Website? One Small Fix, $49 CAD",
     description:
-      "Small fix, big difference. We fix broken layouts, dead buttons, and busted contact forms for $49, usually in 48 hours."
+      "Small fix, big difference. We fix broken layouts, dead buttons, and busted contact forms for $49 CAD, usually within 48 hours of payment and receiving access."
   },
   twitter: {
+    images: ["https://www.peiwebstudio.ca/opengraph-image"],
     card: "summary_large_image",
-    title: "Got a Broken Website? One Small Fix, $49",
+    title: "Got a Broken Website? One Small Fix, $49 CAD",
     description:
-      "Small fix, big difference. Broken layouts, dead buttons, busted forms. Fixed in about 48 hours."
+      "Small fix, big difference. Broken layouts, dead buttons, busted forms. Usually fixed within 48 hours of payment and receiving access."
   },
   robots: { index: true, follow: true }
 };
@@ -39,18 +41,18 @@ export const metadata: Metadata = {
 const proofProjects = [
   {
     name: "Lustrouz Aesthetics",
-    where: "Toronto, CA",
+    where: "Toronto, Canada",
     what: "Skincare clinic site rebuilt around one goal: booked appointments."
   },
   {
     name: "Lootbins Canada",
     where: "Online retail",
-    what: "Shopify storefront cleaned up so browsing to checkout stopped losing people."
+    what: "Shopify storefront with product browsing and a clear checkout path."
   },
   {
     name: "Listed PEI",
     where: "Directory platform",
-    what: "Listings, search, and enquiries wired together with no manual updates."
+    what: "A business directory connecting listings, search, and enquiries."
   },
   {
     name: "Mos Tire",
@@ -86,19 +88,19 @@ const steps = [
   {
     number: "02",
     title: "We confirm the price",
-    body: "A real person looks at your site. If it is a small fix, we send a $49 payment link. If it is bigger, we say so and quote it honestly."
+    body: "A real person looks at your site. If it is a small fix, we send a $49 CAD payment link. If it is bigger, we say so and quote it honestly."
   },
   {
     number: "03",
     title: "Fixed and back to you",
-    body: "You pay, we fix it, usually inside 48 hours. You get a note explaining exactly what changed."
+    body: "You pay, we fix it, usually within 48 hours of payment and receiving access. You get a note explaining exactly what changed."
   }
 ];
 
 const faqs = [
   {
-    q: "Is it really $49?",
-    a: "Yes, for one small fix. We confirm the price before you pay anything. If your problem turns out to be bigger than a small fix, we tell you upfront and quote it separately. You are never charged for asking."
+    q: "Is it really $49 CAD?",
+    a: "Yes, for one small fix. The price is in Canadian dollars. We confirm the scope and any applicable taxes before you pay anything. If your problem turns out to be bigger than a small fix, we tell you upfront and quote it separately. You are never charged for asking."
   },
   {
     q: "What counts as one small fix?",
@@ -118,14 +120,14 @@ const faqs = [
   },
   {
     q: "What if the fix does not work?",
-    a: "Then it is not finished, and we keep going until it is or refund you. We are not interested in taking $49 for a job left half done."
+    a: "Then it is not finished, and we keep going until it is or refund you. We are not interested in taking $49 CAD for a job left half done."
   }
 ];
 
 const badges = [
-  { icon: Clock, title: "About 48 hours", body: "Most small fixes, start to finish" },
+  { icon: Clock, title: "About 48 hours", body: "After payment and receiving access" },
   { icon: Globe, title: "Anywhere you are", body: "Time zones are not a problem" },
-  { icon: ShieldCheck, title: "Nothing breaks", body: "We touch only what you asked for" }
+  { icon: ShieldCheck, title: "Agreed scope", body: "We confirm the work before payment" }
 ];
 
 export default function USFixPage() {
@@ -168,8 +170,8 @@ export default function USFixPage() {
 
               <p className="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
                 Something on your site is broken and it has been bugging you for
-                weeks. Send it to us. We fix one small thing for $49, usually
-                inside 48 hours, and you do not pay until we confirm it is
+                weeks. Send it to us. We fix one small thing for $49 CAD, usually
+                within 48 hours of payment and receiving access, and you do not pay until we confirm it is
                 actually a small fix.
               </p>
 
@@ -195,12 +197,12 @@ export default function USFixPage() {
               </p>
             </div>
 
-            {/* $49 stamp */}
+            {/* $49 CAD stamp */}
             <div className="mx-auto shrink-0 md:mx-0">
               <div className="flex size-36 flex-col items-center justify-center rounded-full bg-[#ff2d78] text-white shadow-[0_0_60px_rgba(255,45,120,0.35)] sm:size-44">
-                <span className="text-5xl font-black leading-none sm:text-6xl">$49</span>
+                <span className="text-3xl font-black leading-none sm:text-4xl">$49 CAD</span>
                 <span className="mt-1 text-sm font-bold uppercase tracking-[0.16em]">
-                  only
+                  one small fix
                 </span>
               </div>
             </div>
@@ -257,7 +259,7 @@ export default function USFixPage() {
             <div className="flex items-center gap-2.5">
               <AlertTriangle className="size-5 text-[#ff2d78]" aria-hidden="true" />
               <h3 className="text-lg font-extrabold uppercase tracking-wide text-white">
-                What $49 does not cover
+                What $49 CAD does not cover
               </h3>
             </div>
             <p className="mt-3 text-[15px] leading-relaxed text-white/60">
@@ -278,7 +280,7 @@ export default function USFixPage() {
             </ul>
             <p className="mt-5 border-t border-white/10 pt-5 text-[15px] leading-relaxed text-white/70">
               Those are real projects with real quotes. Ask us and we will price
-              it properly instead of pretending it fits in $49.
+              it properly instead of pretending it fits in $49 CAD.
             </p>
           </div>
         </div>
@@ -335,8 +337,8 @@ export default function USFixPage() {
             We build the real thing too
           </h2>
           <p className="mt-3 max-w-xl text-base text-white/60">
-            The $49 fix is the small door. Behind it is a studio that ships full
-            websites, stores, and automations for clients in several countries.
+            The $49 CAD fix is the small door. Behind it is a studio that ships full
+            websites, stores, and tools for businesses.
           </p>
 
           <div className="mt-9 grid gap-4 sm:grid-cols-2">
@@ -359,7 +361,7 @@ export default function USFixPage() {
           </div>
 
           <a
-            href="https://peiwebstudio.ca"
+            href="https://www.peiwebstudio.ca"
             className="mt-7 inline-flex min-h-[44px] items-center gap-2 text-base font-bold text-white underline decoration-[#c8ff2e] decoration-2 underline-offset-4"
           >
             See the full studio site
@@ -447,7 +449,7 @@ export default function USFixPage() {
               peiwebstudio@gmail.com
             </a>
             <a
-              href="https://peiwebstudio.ca"
+              href="https://www.peiwebstudio.ca"
               className="inline-flex min-h-[44px] items-center hover:text-white"
             >
               peiwebstudio.ca
@@ -465,7 +467,7 @@ export default function USFixPage() {
           href="#fix-form"
           className="flex w-full items-center justify-center gap-2 rounded-full bg-[#c8ff2e] py-3.5 text-base font-extrabold uppercase tracking-wide text-black active:scale-[0.98]"
         >
-          Fix my site for $49
+          Fix my site for $49 CAD
         </a>
       </div>
       {/* Spacer so the sticky bar never covers the footer's last line. */}

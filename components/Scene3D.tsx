@@ -35,13 +35,15 @@ export function Scene3D() {
     );
     camera.position.z = 6;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    let renderer: THREE.WebGLRenderer;
+    try { renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true }); }
+    catch { return; } // Keep the static gradient when WebGL is unavailable.
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     mount.appendChild(renderer.domElement);
 
     // ─── Central distorted sphere (wireframe) ───────────────────────
-    const geometry = new THREE.IcosahedronGeometry(2.1, 6);
+    const geometry = new THREE.IcosahedronGeometry(2.1, 3);
     const basePositions = geometry.attributes.position.array.slice() as Float32Array;
     const material = new THREE.MeshBasicMaterial({
       wireframe: true,
@@ -52,7 +54,7 @@ export function Scene3D() {
     scene.add(sphere);
 
     // ─── Particle field ─────────────────────────────────────────────
-    const particleCount = 900;
+    const particleCount = 300;
     const positions = new Float32Array(particleCount * 3);
     for (let i = 0; i < particleCount; i++) {
       positions[i * 3] = (Math.random() - 0.5) * 18;
@@ -109,6 +111,7 @@ export function Scene3D() {
     const posAttr = geometry.attributes.position;
 
     const tick = () => {
+      if (document.hidden) return;
       const t = clock.getElapsedTime();
 
       // Vertex distortion: gentle noise pulsing on the sphere surface.
@@ -142,12 +145,18 @@ export function Scene3D() {
       raf = requestAnimationFrame(tick);
     };
     tick();
+    const onVisibility = () => {
+      cancelAnimationFrame(raf);
+      if (!document.hidden) tick();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
 
     // React to theme changes without rebuilding the scene.
     const themeInterval = window.setInterval(applyColors, 200);
 
     return () => {
       cancelAnimationFrame(raf);
+      document.removeEventListener("visibilitychange", onVisibility);
       window.clearInterval(themeInterval);
       window.removeEventListener("pointermove", handlePointer);
       window.removeEventListener("scroll", handleScroll);

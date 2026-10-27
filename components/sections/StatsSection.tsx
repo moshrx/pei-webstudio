@@ -1,106 +1,16 @@
-"use client";
-
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
-
-import { SectionGlow } from "@/components/SectionGlow";
-
-const stats = [
-  {
-    value: 15,
-    suffix: "+",
-    label: "Digital Systems Shipped",
-    description: "Web, AI, SEO, and automation"
-  },
-  {
-    value: 100,
-    suffix: "%",
-    label: "Owner Handoff",
-    description: "Training and launch support"
-  },
-  {
-    value: 7,
-    suffix: " Days",
-    label: "Sprint Launches",
-    description: "Focused builds for fast movers"
-  }
+const commitments = [
+  ["Clear scope", "Know what is included before work begins."],
+  ["Your accounts", "Keep control of your domain, hosting, and website."],
+  ["Personal support", "Get a walkthrough and practical guidance at handoff."]
 ];
 
-function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  // `amount: 0.2` fires when 20% of the element is visible, which is reliable on
-  // short mobile viewports (a large negative margin could never be satisfied).
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    const duration = 1200;
-    const startTime = performance.now();
-
-    const tick = (now: number) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * value));
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-
-    const raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [isInView, value]);
-
-  // Independent safety net: if the in-view animation never triggers (a missed
-  // IntersectionObserver on a short viewport, reduced motion, or a background
-  // tab), still land on the final value so a stat never sticks at 0.
-  useEffect(() => {
-    const settle = window.setTimeout(() => {
-      setCount((c) => (c < value ? value : c));
-    }, 2500);
-    return () => window.clearTimeout(settle);
-  }, [value]);
-
-  return (
-    <span ref={ref} className="font-serif-display text-5xl italic text-body">
-      {count}
-      {suffix}
-    </span>
-  );
-}
-
 export function StatsSection() {
-  return (
-    <section className="relative overflow-hidden py-20 sm:py-28">
-      <SectionGlow className="left-1/2 top-0 -translate-x-1/2" />
-
-      <div className="relative mx-auto w-[min(1100px,calc(100%-2rem))]">
-        <motion.h2
-          initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="font-serif-display mb-12 max-w-3xl text-3xl text-body md:text-4xl"
-        >
-          Built for businesses moving faster than templates
-        </motion.h2>
-
-        <div className="grid gap-4 sm:grid-cols-3">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="liquid-glass rounded-2xl p-8"
-            >
-              <AnimatedNumber value={stat.value} suffix={stat.suffix} />
-              <div className="mt-4 font-medium text-body">{stat.label}</div>
-              <div className="mt-1 text-sm text-body/60">{stat.description}</div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <section aria-label="What you can expect" className="relative py-10">
+    <div className="mx-auto grid w-[min(1100px,calc(100%-2rem))] gap-4 sm:grid-cols-3">
+      {commitments.map(([title, text]) => <div key={title} className="liquid-glass rounded-2xl p-6">
+        <h2 className="text-lg font-semibold text-body">{title}</h2>
+        <p className="mt-2 text-sm leading-relaxed text-body/70">{text}</p>
+      </div>)}
+    </div>
+  </section>;
 }

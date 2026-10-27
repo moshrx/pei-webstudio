@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { BriefcaseBusiness, Home, Layers, Mail } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -22,6 +23,7 @@ function DockItem({
   onHoverChange: (v: boolean) => void;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
+  const pathname = usePathname();
   const distance = useMotionValue(0);
   const springDistance = useSpring(distance, {
     stiffness: 300,
@@ -62,7 +64,7 @@ function DockItem({
 
       <Link
         ref={ref}
-        href={item.href}
+        href={pathname === "/" ? item.href : `/${item.href}`}
         aria-label={item.label}
         onMouseMove={handleMouseMove}
         className="flex items-center justify-center rounded-full p-2.5 transition-colors hover:bg-body/5 sm:p-3"
@@ -101,6 +103,7 @@ export function FloatingDock() {
     <AnimatePresence>
       {visible && (
         <motion.nav
+          aria-label="Quick navigation"
           initial={{ y: 24, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 24, opacity: 0 }}

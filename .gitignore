@@ -24,3 +24,7 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Python test caches
+__pycache__/
+*.pyc

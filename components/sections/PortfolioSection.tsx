@@ -1,11 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import { SectionGlow } from "@/components/SectionGlow";
 
 const projects = [
+  {
+    id: 14,
+    title: "Nocturne",
+    link: "/showcase/nocturne",
+    internal: true,
+    art: "nocturne",
+    preview: true,
+    tag: "Motion Design Concept",
+    description:
+      "An immersive event experience shaped by cinematic type, orbital motion, and atmospheric transitions.",
+    tech: ["Motion Design", "Art Direction", "Responsive"]
+  },
+  {
+    id: 13,
+    title: "Pelagic",
+    link: "/showcase/pelagic",
+    internal: true,
+    art: "pelagic",
+    preview: true,
+    tag: "Interactive Concept",
+    description:
+      "A high-energy marine technology concept with animated data signals and a bold editorial layout.",
+    tech: ["Creative Development", "Animation", "Product Story"]
+  },
   {
     id: 12,
     title: "Mos Tire",
@@ -27,6 +53,7 @@ const projects = [
   {
     id: 11,
     title: "Lustrouz Aesthetics",
+    preview: true,
     link: "https://lustrouz-web.vercel.app/",
     tag: "Website Design",
     description:
@@ -37,32 +64,37 @@ const projects = [
     id: 4,
     title: "Listed PEI",
     link: "https://listedpei.ca",
-    tag: "Connected Platform",
+    tag: "Local AI Platform",
     description:
-      "A full business directory where listings, search, and customer enquiries all connect automatically, with no manual updates needed.",
-    tech: ["Website", "Automation", "Analytics"]
+      "A growing toolkit for PEI businesses, combining Google profile content, AI visibility auditing, and practical local discovery tools.",
+    tech: ["GEO Audit", "Local SEO", "AI Tools"]
   },
   {
     id: 1,
     title: "Fat Cat Bakery",
+    image: "/assets/projects/fatcat.jpg",
+    preview: true,
     link: "https://fatcatbakery.netlify.app/",
     tag: "Local Business",
     description:
-      "A local bakery site set up to be found on Google, load fast on mobile, and turn browsers into walk-ins.",
+      "A bakery website with a menu, brand story, and clear ways to find and contact the business.",
     tech: ["Website", "Google-ready", "Fast Loading"]
   },
   {
     id: 3,
     title: "Lootbins Canada",
+    image: "/assets/projects/lootbins.jpg",
     link: "https://www.lootbinscanada.com/",
     tag: "Online Store",
     description:
-      "A retail site built to sell. Easy to browse on any device, with a clear path from product to checkout.",
+      "A Shopify retail site with product browsing and a clear path to checkout.",
     tech: ["E-commerce", "Website", "Shopify"]
   },
   {
     id: 2,
     title: "Red Soil",
+    image: "/assets/projects/redsoil.jpg",
+    preview: true,
     link: "https://redsoil.netlify.app/",
     tag: "Brand & Growth",
     description:
@@ -72,6 +104,7 @@ const projects = [
   {
     id: 0,
     title: "Cricket PEI",
+    image: "/assets/projects/cricket.jpg",
     link: "https://cricketpei.ca",
     tag: "Website Design",
     description:
@@ -80,7 +113,8 @@ const projects = [
   }
 ];
 
-export function PortfolioSection({ showTitle = true }: { showTitle?: boolean }) {
+export function PortfolioSection({ showTitle = true, featured = false }: { showTitle?: boolean; featured?: boolean }) {
+  const visibleProjects = featured ? [projects.find(p => p.id === 14)!, projects.find(p => p.id === 13)!, projects.find(p => p.id === 0)!] : projects;
   return (
     <section id="portfolio" className="relative overflow-hidden py-20 sm:py-28">
       <SectionGlow className="left-0 top-1/3" />
@@ -94,12 +128,12 @@ export function PortfolioSection({ showTitle = true }: { showTitle?: boolean }) 
             transition={{ duration: 0.6 }}
             className="font-serif-display mb-12 text-3xl text-body sm:text-4xl md:text-5xl"
           >
-            Proof in production.
+            A closer look at our work.
           </motion.h2>
         )}
 
-        <div className="space-y-4">
-          {projects.map((project, i) => (
+        <div className={`grid gap-5 ${featured ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
+          {visibleProjects.map((project, i) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
@@ -107,27 +141,32 @@ export function PortfolioSection({ showTitle = true }: { showTitle?: boolean }) 
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.06, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <a
+              <Link
                 href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="liquid-glass group flex flex-col gap-4 rounded-2xl p-6 transition-colors hover:bg-body/[0.04] sm:flex-row sm:items-start sm:gap-8 sm:p-8"
+                target={project.internal ? undefined : "_blank"}
+                rel={project.internal ? undefined : "noopener noreferrer"}
+                className="liquid-glass group flex h-full flex-col gap-4 rounded-2xl p-5 transition-colors hover:bg-body/[0.04] sm:p-6"
               >
-                {/* Row number */}
-                <span className="font-serif-display hidden w-12 shrink-0 select-none pt-1 text-3xl italic text-body/20 transition-colors group-hover:text-body/60 sm:block">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-
-                {/* Tag */}
-                <span className="w-full shrink-0 pt-1.5 text-xs font-semibold uppercase tracking-widest text-body/60 sm:w-40">
-                  {project.tag}
-                </span>
+                {project.art === "nocturne" && <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-[#09080e]">
+                  <Image src="/assets/showcase/nocturne-hero.png" alt="Nocturne motion website concept" fill sizes={featured ? "(min-width: 768px) 350px, 100vw" : "(min-width: 768px) 520px, 100vw"} className="object-cover transition duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/20" />
+                  <span className="font-serif-display absolute inset-0 flex items-center justify-center text-5xl text-white sm:text-7xl">Nocturne</span>
+                </div>}
+                {project.art === "pelagic" && <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-[#daf8f1] text-[#063a3e]">
+                  <Image src="/assets/showcase/pelagic-hero.png" alt="Pelagic marine technology website concept" fill sizes={featured ? "(min-width: 768px) 350px, 100vw" : "(min-width: 768px) 520px, 100vw"} className="object-cover transition duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#daf8f1] via-[#daf8f1]/25 to-transparent" />
+                  <span className="absolute bottom-[14%] left-[8%] text-4xl font-black leading-[0.85] tracking-[-0.06em] sm:text-6xl">READ THE<br /><em className="font-serif-display font-normal">CURRENT.</em></span>
+                </div>}
+                {project.image && <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-body/10">
+                  <Image src={project.image} alt={`${project.title} website screenshot`} fill sizes={featured ? "(min-width: 768px) 350px, 100vw" : "(min-width: 768px) 520px, 100vw"} className="object-cover object-top" />
+                </div>}
+                <span className="text-xs font-semibold uppercase tracking-widest text-body/70">{project.tag}{project.preview ? " · Preview" : ""}</span>
 
                 {/* Main content */}
                 <div className="min-w-0 flex-1">
                   <h3 className="flex items-center gap-2 text-xl font-semibold leading-snug text-body sm:text-2xl">
                     {project.title}
-                    <ArrowUpRight className="size-5 shrink-0 -translate-x-1 text-body/40 opacity-0 transition-all group-hover:translate-x-0 group-hover:text-body group-hover:opacity-100" />
+                    <ArrowUpRight className="size-5 shrink-0 -translate-x-1 text-body/40 opacity-100 transition-all group-hover:translate-x-0 group-hover:text-body group-hover:opacity-100" />
                   </h3>
                   <p className="mt-2.5 max-w-xl text-sm leading-relaxed text-body/60 sm:text-base">
                     {project.description}
@@ -143,10 +182,11 @@ export function PortfolioSection({ showTitle = true }: { showTitle?: boolean }) 
                     ))}
                   </div>
                 </div>
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>
+        {featured && <Link href="/portfolio" className="mt-8 inline-flex min-h-11 items-center gap-2 font-medium text-body underline underline-offset-4">See all projects <ArrowUpRight className="size-4" /></Link>}
       </div>
     </section>
   );
