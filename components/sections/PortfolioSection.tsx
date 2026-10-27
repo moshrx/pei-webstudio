@@ -37,10 +37,10 @@ const projects = [
     id: 4,
     title: "Listed PEI",
     link: "https://listedpei.ca",
-    tag: "Connected Platform",
+    tag: "Local AI Platform",
     description:
-      "A full business directory where listings, search, and customer enquiries all connect automatically, with no manual updates needed.",
-    tech: ["Website", "Automation", "Analytics"]
+      "A growing toolkit for PEI businesses, combining Google profile content, AI visibility auditing, and practical local discovery tools.",
+    tech: ["GEO Audit", "Local SEO", "AI Tools"]
   },
   {
     id: 1,

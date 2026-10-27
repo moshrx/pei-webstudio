@@ -10,6 +10,7 @@ import { FAQSection } from "@/components/sections/FAQSection";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { GeoAuditSection } from "@/components/sections/GeoAuditSection";
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
       <StatsSection />
       <FeaturesSection />
       <PortfolioSection />
+      <GeoAuditSection />
       <ProcessSection />
       <FAQSection />
       <CTABanner />
