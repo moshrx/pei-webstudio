@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const techExplanations = [
   { phase: "1. Page loading", techSpeak: "Server-rendered pages and optimized assets where appropriate.", plainEnglish: "We keep pages focused and check loading performance before launch." },
@@ -33,9 +32,7 @@ export function TechExplanationToggle() {
               className="relative rounded-full px-5 py-2 text-sm font-medium transition-colors"
             >
               {active && (
-                <motion.span
-                  layoutId="techTogglePill"
-                  transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                <span
                   className="absolute inset-0 rounded-full bg-body"
                 />
               )}
@@ -48,31 +45,23 @@ export function TechExplanationToggle() {
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-        {techExplanations.map((item, index) => (
-          <motion.div
+        {techExplanations.map((item) => (
+          <div
             key={item.phase}
-            initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.08 }}
             className="liquid-glass rounded-2xl p-4"
           >
             <h3 className="text-xs font-semibold text-body sm:text-sm">{item.phase}</h3>
             <div className="relative mt-2 min-h-[70px]">
-              <AnimatePresence mode="wait">
-                <motion.p
+              <>
+                <p
                   key={`${item.phase}-${showTechSpeak}`}
-                  initial={{ opacity: 0, y: showTechSpeak ? 8 : -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: showTechSpeak ? -8 : 8 }}
-                  transition={{ duration: 0.25, ease: "easeInOut" }}
                   className="text-xs leading-relaxed text-body/60 sm:text-sm"
                 >
                   {showTechSpeak ? item.techSpeak : item.plainEnglish}
-                </motion.p>
-              </AnimatePresence>
+                </p>
+              </>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

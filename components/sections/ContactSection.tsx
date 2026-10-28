@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { z } from "zod";
 
@@ -17,7 +16,7 @@ const inputClass =
   "w-full rounded-lg border border-body/20 bg-page px-4 py-3 text-body placeholder:text-body/50 transition-colors focus:border-body/70 focus:outline-none";
 
 export function ContactSection({ standalone = false }: { standalone?: boolean }) {
-  const Heading = standalone ? motion.h1 : motion.h2;
+  const Heading = standalone ? "h1" : "h2";
   const confirmation = useRef<HTMLDivElement>(null);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -77,10 +76,6 @@ export function ContactSection({ standalone = false }: { standalone?: boolean })
 
       <div className="relative mx-auto w-[min(1100px,calc(100%-2rem))]">
         <Heading
-          initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
           className="font-serif-display mb-4 text-3xl text-body sm:text-4xl md:text-5xl"
         >
           Tell us about your website.
@@ -90,11 +85,7 @@ export function ContactSection({ standalone = false }: { standalone?: boolean })
           We will review your request and explain the next step. No payment needed to enquire.
         </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+        <div
           className="studio-contact-form mx-auto max-w-2xl"
         >
           {submitted ? (
@@ -243,7 +234,7 @@ export function ContactSection({ standalone = false }: { standalone?: boolean })
               </form>
             </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

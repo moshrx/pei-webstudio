@@ -41,3 +41,28 @@ floating dock overrode its own centering transform and covered narrow-screen con
 The dock is now hidden below 640px, where the fixed header menu supplies navigation.
 The mobile menu also uses compact spacing in short landscape viewports. Portrait
 checks passed at 320×568, 360×800, and 390×844; landscape passed at 844×390.
+
+## Safari middle-page scroll follow-up (October 28)
+
+User reports lag while scrolling through the middle of peiwebstudio.ca on iPhone
+16 Pro in Safari. Live HTML still contained 42 opacity-zero reveal elements.
+Removed scroll reveals, card tilt, and the global scroll progress animation;
+static sections now render visibly without animation hydration. Disabled large
+glows and fixed-header backdrop blur on touch pointers, removed the audit card
+backdrop blur, and stopped showcase link prefetching. The desktop dock uses an
+IntersectionObserver and is omitted on touch devices. MotionConfig now lives only
+under showcase routes to preserve reduced-motion support without loading Motion
+on every page.
+
+- Homepage first-load JavaScript: 190 kB before, 143 kB after (about 25% less).
+- Portfolio: 159 to 116 kB; legal: 155 to 111 kB.
+- Homepage server HTML: zero opacity-zero reveal elements after the change.
+- Production build/type/lint checks pass; all 15 unit tests pass.
+- HTTP checks: 202 passed, zero failed, 31 assets checked.
+- Chrome 390×844: no horizontal overflow; FAQ opens; menu opens/closes and the
+  AI Audit anchor settles 112 px below the top of the viewport.
+- Local Lighthouse mobile: performance 96, FCP 0.9 s, LCP 2.7 s, TBT 100 ms,
+  CLS 0. This measures startup, not Safari scroll smoothness.
+
+Physical iPhone Safari was not available for verification. These changes remove
+identified scroll/compositing costs; device-specific resolution remains unverified.

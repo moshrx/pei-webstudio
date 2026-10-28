@@ -1,9 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
 
 import { SectionGlow } from "@/components/SectionGlow";
-import { TiltCard } from "@/components/TiltCard";
 import { TechExplanationToggle } from "./TechExplanationToggle";
 
 const whyChoose = [
@@ -31,15 +27,11 @@ export function AboutSection() {
       <SectionGlow className="right-0 top-0" />
 
       <div className="relative mx-auto w-[min(1100px,calc(100%-2rem))]">
-        <motion.h2
-          initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <h2
           className="font-serif-display mb-4 text-3xl text-body sm:text-4xl md:text-5xl"
         >
           Your local website partner.
-        </motion.h2>
+        </h2>
         <p className="mb-12 max-w-2xl text-body/60">
           Based in Charlottetown, we work directly with business owners on new
           websites, practical improvements, and support after launch. You get clear
@@ -47,13 +39,9 @@ export function AboutSection() {
         </p>
 
         <div className="grid gap-4 md:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.05 }}
+          <div
           >
-            <TiltCard className="h-full" tiltAmount={5} scale={1.01}>
+            <div className="h-full">
               <div className="liquid-glass h-full rounded-2xl p-8">
                 <h3 className="mb-4 text-2xl font-semibold text-body">Our Mission</h3>
                 <p className="text-body/70">
@@ -62,16 +50,12 @@ export function AboutSection() {
                   follow-up, and better visibility into what is actually working.
                 </p>
               </div>
-            </TiltCard>
-          </motion.div>
+            </div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+          <div
           >
-            <TiltCard className="h-full" tiltAmount={5} scale={1.01}>
+            <div className="h-full">
               <div className="liquid-glass h-full rounded-2xl p-8">
                 <h3 className="mb-4 text-2xl font-semibold text-body">Our Approach</h3>
                 <p className="text-body/70">
@@ -80,15 +64,11 @@ export function AboutSection() {
                   integration does not reduce friction or improve growth, it does not go in.
                 </p>
               </div>
-            </TiltCard>
-          </motion.div>
+            </div>
+          </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+        <div
           className="mt-12"
         >
           <h3 className="mb-6 text-2xl font-semibold text-body">Why Choose Us?</h3>
@@ -100,13 +80,9 @@ export function AboutSection() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.25 }}
+        <div
           className="mt-16"
         >
           <details className="liquid-glass rounded-2xl p-6">
@@ -119,7 +95,7 @@ export function AboutSection() {
           </p>
           <TechExplanationToggle />
           </details>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

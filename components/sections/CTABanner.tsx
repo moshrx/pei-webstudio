@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 
 export function CTABanner() {
@@ -10,18 +7,14 @@ export function CTABanner() {
         {/* Soft white radial glow behind the panel */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-1/2 -z-0 h-[500px] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[130px]"
+          className="section-glow pointer-events-none absolute left-1/2 top-1/2 -z-0 h-[500px] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[130px]"
           style={{
             background:
               "radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)"
           }}
         />
 
-        <motion.div
-          initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
+        <div
           className="liquid-glass relative rounded-3xl p-8 sm:p-12"
         >
           <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
@@ -64,7 +57,7 @@ export function CTABanner() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
