@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   BadgeCheck,
@@ -27,11 +24,7 @@ export function GeoAuditSection() {
       <SectionGlow className="left-0 top-1/4" />
 
       <div className="relative mx-auto w-[min(1100px,calc(100%-2rem))]">
-        <motion.div
-          initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.65 }}
+        <div
           className="liquid-glass overflow-hidden rounded-[2rem]"
         >
           <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
@@ -77,7 +70,7 @@ export function GeoAuditSection() {
             </div>
 
             <div className="border-t border-body/10 bg-body/[0.035] p-5 sm:p-8 lg:border-l lg:border-t-0 lg:p-10">
-              <div className="rounded-2xl border border-body/10 bg-page/55 p-5 shadow-2xl shadow-black/5 backdrop-blur-sm sm:p-6">
+              <div className="rounded-2xl border border-body/10 bg-page/55 p-5 shadow-2xl shadow-black/5 sm:p-6">
                 <div className="flex items-center justify-between border-b border-body/10 pb-5">
                   <div className="flex items-center gap-3">
                     <div className="grid size-10 place-items-center rounded-full bg-body text-page">
@@ -94,13 +87,9 @@ export function GeoAuditSection() {
                 </div>
 
                 <div className="mt-5 space-y-3">
-                  {signals.map((signal, index) => (
-                    <motion.div
+                  {signals.map((signal) => (
+                    <div
                       key={signal.label}
-                      initial={{ opacity: 0, x: 12 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.15 + index * 0.06 }}
                       className="flex items-center gap-3 rounded-xl border border-body/[0.08] bg-body/[0.025] p-3.5"
                     >
                       <div className="grid size-9 shrink-0 place-items-center rounded-lg bg-body/[0.07] text-body/75">
@@ -111,7 +100,7 @@ export function GeoAuditSection() {
                         <p className="mt-0.5 text-xs text-body/45">{signal.detail}</p>
                       </div>
                       <span className="text-xs font-semibold tabular-nums text-body/45">/20</span>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -122,7 +111,7 @@ export function GeoAuditSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

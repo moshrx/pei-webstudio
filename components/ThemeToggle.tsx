@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 
 export function ThemeToggle() {
@@ -23,14 +22,11 @@ export function ThemeToggle() {
       className="liquid-glass flex size-11 items-center justify-center rounded-full text-body transition-colors hover:bg-body/5"
     >
       {mounted ? (
-        <motion.span
+        <span
           key={isDark ? "dark" : "light"}
-          initial={{ opacity: 0, rotate: -30, scale: 0.8 }}
-          animate={{ opacity: 1, rotate: 0, scale: 1 }}
-          transition={{ duration: 0.25 }}
         >
           {isDark ? <Moon className="size-4" /> : <Sun className="size-4" />}
-        </motion.span>
+        </span>
       ) : (
         <span className="size-4" />
       )}

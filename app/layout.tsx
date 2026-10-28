@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif } from "next/font/google";
 
-import { SiteChrome } from "@/components/SiteChrome";
 import { ThemeProvider } from "@/components/providers";
 import "./globals.css";
 import { pageMetadata, siteUrl } from "@/lib/site";
@@ -41,7 +40,6 @@ export default function RootLayout({
             url: siteUrl, logo: `${siteUrl}/icon.png`, email: "peiwebstudio@gmail.com", telephone: "+1-647-913-1487",
             areaServed: { "@type": "AdministrativeArea", name: "Prince Edward Island" }
           }) }} />
-          <SiteChrome />
           {children}
         </ThemeProvider>
       </body>

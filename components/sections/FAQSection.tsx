@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { Plus } from "lucide-react";
 
@@ -27,11 +26,7 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.45, delay: index * 0.05 }}
+    <div
       className="liquid-glass rounded-2xl"
     >
       <button
@@ -41,18 +36,16 @@ function FAQItem({
         className="flex w-full items-center justify-between gap-4 p-5 text-left"
       >
         <span className="font-medium text-body">{faq.question}</span>
-        <motion.div
-          animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ duration: 0.2 }}
+        <div
           className="flex-shrink-0"
         >
           <Plus className="size-5 text-body/60" />
-        </motion.div>
+        </div>
       </button>
       <div id={`faq-answer-${index}`} hidden={!isOpen}>
         <p className="px-5 pb-5 leading-relaxed text-body/70">{faq.answer}</p>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -64,15 +57,11 @@ export function FAQSection() {
       <SectionGlow className="right-1/4 top-1/4" />
 
       <div className="relative mx-auto w-[min(1100px,calc(100%-2rem))]">
-        <motion.h2
-          initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <h2
           className="font-serif-display mb-12 text-3xl text-body sm:text-4xl md:text-5xl"
         >
           Questions before we start
-        </motion.h2>
+        </h2>
 
         <div className="mx-auto max-w-3xl space-y-4">
           {faqs.map((faq, index) => (
@@ -86,18 +75,14 @@ export function FAQSection() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+        <div
           className="mt-12 flex items-center justify-center gap-2 text-sm"
         >
           <span className="text-body/60">Still have questions?</span>
           <a href="#contact" className="font-medium text-body underline underline-offset-4">
             Let&apos;s talk
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

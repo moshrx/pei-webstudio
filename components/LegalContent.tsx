@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -155,17 +152,14 @@ export default function LegalPage() {
       <section className="relative overflow-hidden py-24 sm:py-28 md:py-32">
         <SectionGlow className="left-1/4 top-10" />
         <div className="relative mx-auto w-[min(1100px,calc(100%-2rem))]">
-          <motion.div
-            initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.6 }}
+          <div
             className="mb-12"
           >
             <h1 className="font-serif-display text-4xl text-body sm:text-5xl">Legal</h1>
             <p className="mt-4 max-w-2xl text-lg text-body/60">
               Our terms, privacy policy, and important disclosures.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid gap-12 lg:grid-cols-[220px_1fr]">
             {/* Sticky TOC */}
@@ -191,21 +185,17 @@ export default function LegalPage() {
 
             <div className="min-w-0">
               <div className="divide-y divide-body/10">
-                {sections.map((section, index) => (
-                  <motion.section
+                {sections.map((section) => (
+                  <section
                     key={section.id}
                     id={section.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-60px" }}
-                    transition={{ duration: 0.5, delay: index * 0.04 }}
                     className="scroll-mt-28 py-10 first:pt-0"
                   >
                     <h2 className="font-serif-display text-2xl text-body sm:text-3xl">
                       {section.title}
                     </h2>
                     <LegalContent content={section.content} />
-                  </motion.section>
+                  </section>
                 ))}
               </div>
 

@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ArrowRight, Bot, Code2, Radar, Rocket } from "lucide-react";
 
 import { SectionGlow } from "@/components/SectionGlow";
@@ -42,11 +39,7 @@ export function ProcessSection() {
       <SectionGlow className="left-1/2 top-0 -translate-x-1/2" />
 
       <div className="relative mx-auto w-[min(1100px,calc(100%-2rem))]">
-        <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className="mb-14"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-body/50">
@@ -55,27 +48,19 @@ export function ProcessSection() {
           <h2 className="font-serif-display mt-3 text-3xl text-body sm:text-4xl md:text-5xl">
             From first conversation to launch
           </h2>
-        </motion.div>
+        </div>
 
         <div className="relative">
-          {/* Connecting line that draws on scroll */}
-          <motion.div
+          {/* Connecting line between desktop steps. */}
+          <div
             aria-hidden="true"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.1, ease: "easeInOut" }}
             className="absolute left-0 right-0 top-8 hidden h-px origin-left bg-body/10 lg:block"
           />
 
           <div className="grid gap-4 lg:grid-cols-4">
-            {steps.map((item, index) => (
-              <motion.div
+            {steps.map((item) => (
+              <div
                 key={item.step}
-                initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: index * 0.12 }}
                 className="liquid-glass relative rounded-2xl p-6"
               >
                 <div className="flex items-center justify-between">
@@ -90,16 +75,12 @@ export function ProcessSection() {
                 <p className="mt-3 text-sm leading-relaxed text-body/60">
                   {item.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+        <div
           className="mt-14 flex flex-col items-center gap-3"
         >
           <a
@@ -110,7 +91,7 @@ export function ProcessSection() {
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
           </a>
           <p className="text-sm text-body/50">Free consultation • No commitment required</p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

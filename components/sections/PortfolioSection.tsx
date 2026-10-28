@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -121,27 +118,20 @@ export function PortfolioSection({ showTitle = true, featured = false }: { showT
 
       <div className="relative mx-auto w-[min(1100px,calc(100%-2rem))]">
         {showTitle && (
-          <motion.h2
-            initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <h2
             className="font-serif-display mb-12 text-3xl text-body sm:text-4xl md:text-5xl"
           >
             A closer look at our work.
-          </motion.h2>
+          </h2>
         )}
 
         <div className={`grid gap-5 ${featured ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
-          {visibleProjects.map((project, i) => (
-            <motion.div
+          {visibleProjects.map((project) => (
+            <div
               key={project.id}
-              initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <Link
+                prefetch={false}
                 href={project.link}
                 target={project.internal ? undefined : "_blank"}
                 rel={project.internal ? undefined : "noopener noreferrer"}
@@ -183,10 +173,10 @@ export function PortfolioSection({ showTitle = true, featured = false }: { showT
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
-        {featured && <Link href="/portfolio" className="mt-8 inline-flex min-h-11 items-center gap-2 font-medium text-body underline underline-offset-4">See all projects <ArrowUpRight className="size-4" /></Link>}
+        {featured && <Link prefetch={false} href="/portfolio" className="mt-8 inline-flex min-h-11 items-center gap-2 font-medium text-body underline underline-offset-4">See all projects <ArrowUpRight className="size-4" /></Link>}
       </div>
     </section>
   );
